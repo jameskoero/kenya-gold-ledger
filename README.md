@@ -6,16 +6,20 @@ Kenya has won **124 Olympic medals** (39 gold, 45 silver, 40 bronze through Pari
 
 This repository is that place. It treats **every medal as a separately catalogued earning** — with the year, the person(s) awarded, and the surrounding context — and gives **gold medals the highest level of detail**, because the gold is the unit around which the whole national narrative is built.
 
+**Jump to:** [What's different](#what-makes-this-different-from-anything-else-out-there) · [What's in here](#whats-in-here) · [Headline analytics](#headline-analytics-all-from-the-datasets-reproducible) · [The ML dimension](#the-ml-dimension) · [Data integrity](#data-integrity) · [Licensing](#licensing) · [Citing this work](#citing-this-work) · [Setup](#setup) · [Status](#status)
+
 ## What makes this different from anything else out there
 
 I looked. Olympic datasets are common on GitHub and Kaggle; none are Kenya-specific, and none go past medal counts. The academic literature on Kenyan running (Onywera, Pitsiladis, Tucker and others) is rigorous but answers a physiological and sociocultural question, not a governance one. So this repo adds four things I haven't seen done anywhere else, for this country or this sport:
 
-1. **A governance network graph** (`notebooks/02_network_analysis.py`) — officials, athletes, and incidents as a graph instead of a list, so recurrence across scandals is visible rather than buried in separate news stories.
-2. **A governance-vs-medals overlay** (`notebooks/03_governance_density.py`) — gold medal counts and documented incident density plotted on the same timeline per Games cycle, so the relationship (or its absence) is something you can look at, not something asserted.
-3. **A transparent Governance Response Scorecard** (`notebooks/04_governance_scorecard.py`) — for each era, a plain count of documented problems against documented institutional responses, with every item listed out rather than compressed into an opaque single score. The 2021-2025 era's response ratio (1.67, versus 0.4 in 2016-2020) is the kind of number a sports ministry, a NOC, or an oversight committee could actually use.
-4. **An interactive single-file dashboard** (`viz/dashboard.html`) — open it in any browser, no server needed. Medal history, gold concentration by event, and a filterable governance/doping timeline, all from the same open data. Built for fans and enthusiasts as much as for researchers.
+1. **A governance network graph** ([`notebooks/02_network_analysis.py`](notebooks/02_network_analysis.py)) — officials, athletes, and incidents as a graph instead of a list, so recurrence across scandals is visible rather than buried in separate news stories.
+2. **A governance-vs-medals overlay** ([`notebooks/03_governance_density.py`](notebooks/03_governance_density.py)) — gold medal counts and documented incident density plotted on the same timeline per Games cycle, so the relationship (or its absence) is something you can look at, not something asserted.
+3. **A transparent Governance Response Scorecard** ([`notebooks/04_governance_scorecard.py`](notebooks/04_governance_scorecard.py)) — for each era, a plain count of documented problems against documented institutional responses, with every item listed out rather than compressed into an opaque single score. The 2021-2025 era's response ratio (1.67, versus 0.4 in 2016-2020) is the kind of number a sports ministry, a NOC, or an oversight committee could actually use.
+4. **An interactive single-file dashboard** ([`viz/dashboard.html`](viz/dashboard.html)) — open it in any browser, no server needed. Medal history, gold concentration by event, and a filterable governance/doping timeline, all from the same open data. Built for fans and enthusiasts as much as for researchers.
 
 ## What's in here
+
+The tree below is a map, not a link list — GitHub doesn't render links inside code blocks, so use the linked references right after it (or just browse the repo directly) to jump to any specific file.
 
 ```
 data/
@@ -51,9 +55,12 @@ viz/                        Generated charts + dashboard.html — novel angle #4
 sources/                    Citation manifest
 ```
 
+**Direct links to everything in the tree above:**
+[`data/medals_by_games.csv`](data/medals_by_games.csv) · [`data/golds.csv`](data/golds.csv) · [`data/all_medals.csv`](data/all_medals.csv) · [`data/build_all_medals.py`](data/build_all_medals.py) · [`data/controversies.json`](data/controversies.json) · [`data/policy_timeline.csv`](data/policy_timeline.csv) · [`data/funding_vs_output.csv`](data/funding_vs_output.csv) · [`data/governance_scorecard.csv`](data/governance_scorecard.csv) · [`data/corpus_labels.jsonl`](data/corpus_labels.jsonl) · [`data/geo/kenya_counties.csv`](data/geo/kenya_counties.csv) · [`data/geo/medalist_origins.csv`](data/geo/medalist_origins.csv) · [`data/build_medalist_origins.py`](data/build_medalist_origins.py) · [`nlp/collect_corpus.py`](nlp/collect_corpus.py) · [`nlp/train.py`](nlp/train.py) · [`nlp/controversy_classifier.py`](nlp/controversy_classifier.py) · [`notebooks/01_medal_analysis.py`](notebooks/01_medal_analysis.py) · [`notebooks/02_network_analysis.py`](notebooks/02_network_analysis.py) · [`notebooks/03_governance_density.py`](notebooks/03_governance_density.py) · [`notebooks/04_governance_scorecard.py`](notebooks/04_governance_scorecard.py) · [`docs/methodology.md`](docs/methodology.md) · [`docs/literature-review.md`](docs/literature-review.md) · [`docs/data-schema.md`](docs/data-schema.md) · [`docs/concept.md`](docs/concept.md) · [`manuscript/`](manuscript) · [`viz/`](viz) · [`sources/`](sources)
+
 ## Headline analytics (all from the datasets, reproducible)
 
-Running `python notebooks/01_medal_analysis.py` regenerates these from the raw CSVs:
+Running [`python notebooks/01_medal_analysis.py`](notebooks/01_medal_analysis.py) regenerates these from the raw CSVs:
 
 - **97.4%** of Kenya's Olympic golds are in athletics; the only exception is Robert Wangila's 1988 boxing gold.
 - **25.6%** of golds have been won by women — every one of them since Pamela Jelimo in 2008.
@@ -64,35 +71,37 @@ Running `python notebooks/01_medal_analysis.py` regenerates these from the raw C
 
 ## The ML dimension
 
-This is not a static archive. The `nlp/` pipeline **classifies real news coverage** into controversy categories — corruption, doping, anti-doping governance, welfare/gender, geopolitics, migration — so the `controversies.json` timeline can update from evidence rather than manual curation. It trains on `data/corpus_labels.jsonl`, a corpus of **real published articles** (BBC, AP, Sports Illustrated, Daily Nation, World Athletics and others), not a synthetic seed set. `collect_corpus.py` fetches full article text at runtime (robots-aware, rate-limited, cached locally and never committed for copyright reasons); `train.py` cross-validates and reports honest per-class metrics.
+This is not a static archive. The [`nlp/`](nlp) pipeline **classifies real news coverage** into controversy categories — corruption, doping, anti-doping governance, welfare/gender, geopolitics, migration — so the [`controversies.json`](data/controversies.json) timeline can update from evidence rather than manual curation. It trains on [`data/corpus_labels.jsonl`](data/corpus_labels.jsonl), a corpus of **real published articles** (BBC, AP, Sports Illustrated, Daily Nation, World Athletics and others), not a synthetic seed set. [`collect_corpus.py`](nlp/collect_corpus.py) fetches full article text at runtime (robots-aware, rate-limited, cached locally and never committed for copyright reasons); [`train.py`](nlp/train.py) cross-validates and reports honest per-class metrics.
 
-The baseline is deliberately transparent (TF-IDF + logistic regression) and its numbers are reported honestly: strong on the well-populated classes (doping, corruption), weak on classes with only two examples — which is the correct behaviour of a small-corpus baseline and the reason "grow the corpus" is the documented next task. The interface is model-agnostic, so a fine-tuned transformer drops in later. See `nlp/README.md`.
+The baseline is TF-IDF + Complement Naive Bayes, chosen after measuring it against several alternatives — see [`nlp/README.md`](nlp/README.md) for the comparison. Its numbers are reported honestly: strong on the well-populated classes (doping, corruption), weak on classes with only two examples — which is the correct behaviour of a small-corpus baseline and the reason "grow the corpus" is the documented next task. The interface is model-agnostic, so a fine-tuned transformer drops in later.
 
-Analytical layers (see `docs/methodology.md`): time-series of funding vs medal output vs sanction counts, geospatial clustering of medalist origin (via `data/geo/`) against county indicators, and network analysis of officials/federations/sanctioned athletes to show how few names recur across scandals.
+Analytical layers (see [`docs/methodology.md`](docs/methodology.md)): time-series of funding vs medal output vs sanction counts, geospatial clustering of medalist origin (via [`data/geo/`](data/geo)) against county indicators, and network analysis of officials/federations/sanctioned athletes to show how few names recur across scandals.
 
 ## Data integrity
 
-Every row carries a `source`, and every claim in `controversies.json` carries a `confidence` level reflecting the strength of public documentation. **No synthetic data is used anywhere.** Where sources disagree — for example, Olympedia records Kenya's totals as 39-45-40 while some Wikipedia tables show 39-44-41, owing to differing treatment of relay and boxing medals — the discrepancy is recorded, not silently resolved. See `docs/methodology.md`.
+Every row carries a `source`, and every claim in [`controversies.json`](data/controversies.json) carries a `confidence` level reflecting the strength of public documentation. **No synthetic data is used anywhere.** Where sources disagree — for example, Olympedia records Kenya's totals as 39-45-40 while some Wikipedia tables show 39-44-41, owing to differing treatment of relay and boxing medals — the discrepancy is recorded, not silently resolved. See [`docs/methodology.md`](docs/methodology.md).
 
 ## Licensing
 
-- **Code** (`nlp/`, `notebooks/`): MIT.
-- **Data and documentation** (`data/`, `docs/`): Creative Commons Attribution 4.0 (CC-BY 4.0), so the dataset is freely reusable and citable with attribution.
+- **Code** ([`nlp/`](nlp), [`notebooks/`](notebooks)): MIT.
+- **Data and documentation** ([`data/`](data), [`docs/`](docs)): Creative Commons Attribution 4.0 (CC-BY 4.0), so the dataset is freely reusable and citable with attribution.
+
+Full text: [`LICENSE`](LICENSE).
 
 ## Citing this work
 
-A versioned release will be archived on Zenodo with a DOI (see `CITATION.cff`). Until then, cite the repository directly. A Country Profile draft for *International Journal of Sport Policy and Politics* is in `manuscript/`.
+A versioned release will be archived on Zenodo with a DOI (see [`CITATION.cff`](CITATION.cff)). Until then, cite the repository directly. A Country Profile draft for *International Journal of Sport Policy and Politics* is in [`manuscript/`](manuscript).
 
 ## Setup
 
-See `SETUP.md` for Colab and Termux commands to run the analysis, the data builders, and the classifier trainer.
+See [`SETUP.md`](SETUP.md) for Colab and Termux commands to run the analysis, the data builders, and the classifier trainer.
 
 ## Status
 
-- **Medal spine** — complete and verified. `medals_by_games.csv` and all 39 golds in `golds.csv` are done.
-- **Per-medal expansion** — `all_medals.csv` holds the 39 verified golds plus sourced anchor rows; the remaining silver/bronze rows are completed by running `data/build_all_medals.py` against source (a committed, reproducible scraper — chosen over hand transcription precisely to avoid memory-based errors). Running it requires network access.
-- **Geospatial** — `data/geo/` ships a factual county reference and a verified origin seed; `build_medalist_origins.py` enriches per-athlete birthplaces from Wikipedia infoboxes, mapping to counties and flagging (never guessing) anything it can't confidently place.
-- **ML pipeline** — trains on a real labelled news corpus with honest, reproducible evaluation. Growing the corpus (especially the thin classes) is the top open task.
+- **Medal spine** — complete and verified. [`medals_by_games.csv`](data/medals_by_games.csv) and all 39 golds in [`golds.csv`](data/golds.csv) are done.
+- **Per-medal expansion** — [`all_medals.csv`](data/all_medals.csv) holds the 39 verified golds plus sourced anchor rows; the remaining silver/bronze rows are completed by running [`data/build_all_medals.py`](data/build_all_medals.py) against source (a committed, reproducible scraper — chosen over hand transcription precisely to avoid memory-based errors). Running it requires network access.
+- **Geospatial** — [`data/geo/`](data/geo) ships a factual county reference and a verified origin seed; [`build_medalist_origins.py`](data/build_medalist_origins.py) enriches per-athlete birthplaces from Wikipedia infoboxes, mapping to counties and flagging (never guessing) anything it can't confidently place.
+- **ML pipeline** — trains on a real labelled news corpus with honest, reproducible evaluation ([`nlp/README.md`](nlp/README.md) has the full comparison of what was tried). Growing the corpus (especially the thin classes) is the top open task.
 - **Controversies / policy / funding** — seeded with verified, sourced incidents; will grow, partly via the NLP pipeline's human-reviewed proposals.
 
-Two builders (`build_all_medals.py`, `build_medalist_origins.py`) need a networked environment to run; they're written to run in Termux or any Python environment. Contributions welcome — see `CONTRIBUTING.md`.
+Two builders ([`build_all_medals.py`](data/build_all_medals.py), [`build_medalist_origins.py`](data/build_medalist_origins.py)) need a networked environment to run; they're written to run in Termux or any Python environment. Contributions welcome — see [`CONTRIBUTING.md`](CONTRIBUTING.md).
