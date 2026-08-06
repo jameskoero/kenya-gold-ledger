@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this dataset or code, please cite it as below."
+title: "Kenya at Gold: An Open Data & Policy Archive of Kenyan Olympic Excellence"
+authors:
+  - family-names: Koero
+    given-names: James
+    website: "https://jameskoero.dev"
+    orcid: "https://orcid.org/0009-0001-8314-2682"
+date-released: 2026-08-06
+license: "MIT AND CC-BY-4.0"
+repository-code: "https://github.com/jameskoero/kenya-olympic-gold"
+keywords:
+  - olympics
+  - kenya
+  - sport policy
+  - open data
+  - sports governance

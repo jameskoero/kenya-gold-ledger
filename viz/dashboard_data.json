@@ -1,0 +1,176 @@
+{
+ "games": [
+  {
+   "games_year": 1964,
+   "host_city": "Tokyo",
+   "gold": 0.0,
+   "silver": 0.0,
+   "bronze": 1.0,
+   "total": 1.0
+  },
+  {
+   "games_year": 1968,
+   "host_city": "Mexico City",
+   "gold": 3.0,
+   "silver": 4.0,
+   "bronze": 2.0,
+   "total": 9.0
+  },
+  {
+   "games_year": 1972,
+   "host_city": "Munich",
+   "gold": 2.0,
+   "silver": 3.0,
+   "bronze": 4.0,
+   "total": 9.0
+  },
+  {
+   "games_year": 1984,
+   "host_city": "Los Angeles",
+   "gold": 1.0,
+   "silver": 0.0,
+   "bronze": 2.0,
+   "total": 3.0
+  },
+  {
+   "games_year": 1988,
+   "host_city": "Seoul",
+   "gold": 5.0,
+   "silver": 2.0,
+   "bronze": 2.0,
+   "total": 9.0
+  },
+  {
+   "games_year": 1992,
+   "host_city": "Barcelona",
+   "gold": 2.0,
+   "silver": 4.0,
+   "bronze": 2.0,
+   "total": 8.0
+  },
+  {
+   "games_year": 1996,
+   "host_city": "Atlanta",
+   "gold": 1.0,
+   "silver": 4.0,
+   "bronze": 3.0,
+   "total": 8.0
+  },
+  {
+   "games_year": 2000,
+   "host_city": "Sydney",
+   "gold": 2.0,
+   "silver": 3.0,
+   "bronze": 2.0,
+   "total": 7.0
+  },
+  {
+   "games_year": 2004,
+   "host_city": "Athens",
+   "gold": 1.0,
+   "silver": 4.0,
+   "bronze": 2.0,
+   "total": 7.0
+  },
+  {
+   "games_year": 2008,
+   "host_city": "Beijing",
+   "gold": 6.0,
+   "silver": 4.0,
+   "bronze": 6.0,
+   "total": 16.0
+  },
+  {
+   "games_year": 2012,
+   "host_city": "London",
+   "gold": 2.0,
+   "silver": 5.0,
+   "bronze": 6.0,
+   "total": 13.0
+  },
+  {
+   "games_year": 2016,
+   "host_city": "Rio de Janeiro",
+   "gold": 6.0,
+   "silver": 6.0,
+   "bronze": 1.0,
+   "total": 13.0
+  },
+  {
+   "games_year": 2020,
+   "host_city": "Tokyo",
+   "gold": 4.0,
+   "silver": 4.0,
+   "bronze": 2.0,
+   "total": 10.0
+  },
+  {
+   "games_year": 2024,
+   "host_city": "Paris",
+   "gold": 4.0,
+   "silver": 2.0,
+   "bronze": 5.0,
+   "total": 11.0
+  }
+ ],
+ "events_by_gold_count": {
+  "3000m steeplechase": 11,
+  "1500m": 8,
+  "800m": 8,
+  "Marathon": 5,
+  "5000m": 3,
+  "10000m": 2,
+  "4x400m relay": 1,
+  "Welterweight": 1
+ },
+ "controversies": [
+  {
+   "year_range": "2015-2018",
+   "title": "Athletics Kenya diversion of Nike sponsorship funds",
+   "category": "governance_corruption",
+   "confidence": "high"
+  },
+  {
+   "year_range": "2016",
+   "title": "Rio 2016 chef de mission theft charges",
+   "category": "governance_corruption",
+   "confidence": "high"
+  },
+  {
+   "year_range": "2015-2021",
+   "title": "Cabinet Secretary conviction over Rio 2016 preparation funds",
+   "category": "governance_corruption",
+   "confidence": "high"
+  },
+  {
+   "year_range": "2016",
+   "title": "WADA non-compliance and Rio eligibility crisis",
+   "category": "anti_doping_governance",
+   "confidence": "high"
+  },
+  {
+   "year_range": "2016-2025",
+   "title": "Systemic doping among sub-elite and elite Kenyan distance runners",
+   "category": "doping",
+   "confidence": "high"
+  },
+  {
+   "year_range": "2021",
+   "title": "Killing of Agnes Tirop and the female-athlete exploitation pattern",
+   "category": "athlete_welfare_gender",
+   "confidence": "high"
+  },
+  {
+   "year_range": "1976-1980",
+   "title": "Olympic boycotts of 1976 and 1980",
+   "category": "politics_geopolitics",
+   "confidence": "high"
+  },
+  {
+   "year_range": "2000-present",
+   "title": "Nationality transfers of Kenyan-born runners",
+   "category": "athlete_migration",
+   "confidence": "medium"
+  }
+ ]
+}

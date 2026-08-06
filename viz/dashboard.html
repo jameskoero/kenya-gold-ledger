@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kenya at Gold — Interactive Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --gold: #D4AF37; --red: #BB0000; --green: #006600; --ink: #1a1a1a;
+    --paper: #fbf9f4; --line: #ddd6c8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--paper); color: var(--ink);
+    margin: 0; padding: 2rem 1.5rem 4rem;
+  }
+  header { max-width: 980px; margin: 0 auto 2rem; text-align: center; }
+  h1 { font-size: 1.8rem; margin-bottom: 0.2rem; }
+  .sub { color: #555; font-size: 0.95rem; }
+  main { max-width: 980px; margin: 0 auto; display: grid; gap: 2rem; }
+  .card {
+    background: white; border: 1px solid var(--line); border-radius: 6px;
+    padding: 1.4rem 1.6rem;
+  }
+  .card h2 { margin-top: 0; font-size: 1.15rem; border-bottom: 2px solid var(--gold);
+    padding-bottom: 0.4rem; }
+  .stat-row { display: flex; gap: 1.2rem; flex-wrap: wrap; margin: 1rem 0; }
+  .stat { flex: 1; min-width: 140px; text-align: center; padding: 0.8rem;
+    background: #faf7ee; border: 1px solid var(--line); border-radius: 4px; }
+  .stat .n { font-size: 1.6rem; font-weight: bold; color: var(--red); }
+  .stat .l { font-size: 0.8rem; color: #555; }
+  canvas { max-height: 380px; }
+  .timeline { list-style: none; margin: 0; padding: 0; }
+  .timeline li {
+    display: grid; grid-template-columns: 110px 1fr auto; gap: 0.8rem;
+    padding: 0.6rem 0; border-bottom: 1px solid var(--line); align-items: center;
+    font-size: 0.92rem;
+  }
+  .timeline li:last-child { border-bottom: none; }
+  .yr { font-weight: bold; color: var(--red); }
+  .badge {
+    font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 10px;
+    background: #eee; white-space: nowrap; text-transform: uppercase; letter-spacing: 0.03em;
+  }
+  .badge.governance_corruption { background: #f6d6d6; }
+  .badge.doping { background: #f6e6c8; }
+  .badge.anti_doping_governance { background: #dceada; }
+  .badge.athlete_welfare_gender { background: #e3d9f0; }
+  .badge.politics_geopolitics { background: #d6e4f0; }
+  .badge.athlete_migration { background: #f0e6d6; }
+  footer { max-width: 980px; margin: 2rem auto 0; font-size: 0.8rem; color: #777;
+    text-align: center; }
+  .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .filters button {
+    font-family: inherit; font-size: 0.8rem; padding: 0.35rem 0.7rem;
+    border: 1px solid var(--line); background: white; border-radius: 14px;
+    cursor: pointer;
+  }
+  .filters button.active { background: var(--ink); color: white; border-color: var(--ink); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Kenya at Gold</h1>
+  <div class="sub">Every Olympic medal, and the governance record around it, on one open timeline</div>
+</header>
+
+<main>
+  <section class="card">
+    <h2>The record, at a glance</h2>
+    <div class="stat-row" id="stat-row"></div>
+    <canvas id="medalsChart"></canvas>
+  </section>
+
+  <section class="card">
+    <h2>Where the golds come from</h2>
+    <canvas id="eventsChart"></canvas>
+  </section>
+
+  <section class="card">
+    <h2>Governance and doping timeline</h2>
+    <div class="filters" id="filters"></div>
+    <ul class="timeline" id="timeline"></ul>
+  </section>
+</main>
+
+<footer>
+  Data: Olympedia, IAAF/World Athletics ethics rulings, BBC, AP, government budget documents.
+  Full sourcing in <code>sources/citations.md</code>. No synthetic data. MIT (code) / CC-BY 4.0 (data).
+</footer>
+
+<script>
+const DATA = {"games": [{"games_year": 1964, "host_city": "Tokyo", "gold": 0.0, "silver": 0.0, "bronze": 1.0, "total": 1.0}, {"games_year": 1968, "host_city": "Mexico City", "gold": 3.0, "silver": 4.0, "bronze": 2.0, "total": 9.0}, {"games_year": 1972, "host_city": "Munich", "gold": 2.0, "silver": 3.0, "bronze": 4.0, "total": 9.0}, {"games_year": 1984, "host_city": "Los Angeles", "gold": 1.0, "silver": 0.0, "bronze": 2.0, "total": 3.0}, {"games_year": 1988, "host_city": "Seoul", "gold": 5.0, "silver": 2.0, "bronze": 2.0, "total": 9.0}, {"games_year": 1992, "host_city": "Barcelona", "gold": 2.0, "silver": 4.0, "bronze": 2.0, "total": 8.0}, {"games_year": 1996, "host_city": "Atlanta", "gold": 1.0, "silver": 4.0, "bronze": 3.0, "total": 8.0}, {"games_year": 2000, "host_city": "Sydney", "gold": 2.0, "silver": 3.0, "bronze": 2.0, "total": 7.0}, {"games_year": 2004, "host_city": "Athens", "gold": 1.0, "silver": 4.0, "bronze": 2.0, "total": 7.0}, {"games_year": 2008, "host_city": "Beijing", "gold": 6.0, "silver": 4.0, "bronze": 6.0, "total": 16.0}, {"games_year": 2012, "host_city": "London", "gold": 2.0, "silver": 5.0, "bronze": 6.0, "total": 13.0}, {"games_year": 2016, "host_city": "Rio de Janeiro", "gold": 6.0, "silver": 6.0, "bronze": 1.0, "total": 13.0}, {"games_year": 2020, "host_city": "Tokyo", "gold": 4.0, "silver": 4.0, "bronze": 2.0, "total": 10.0}, {"games_year": 2024, "host_city": "Paris", "gold": 4.0, "silver": 2.0, "bronze": 5.0, "total": 11.0}], "events_by_gold_count": {"3000m steeplechase": 11, "1500m": 8, "800m": 8, "Marathon": 5, "5000m": 3, "10000m": 2, "4x400m relay": 1, "Welterweight": 1}, "controversies": [{"year_range": "2015-2018", "title": "Athletics Kenya diversion of Nike sponsorship funds", "category": "governance_corruption", "confidence": "high"}, {"year_range": "2016", "title": "Rio 2016 chef de mission theft charges", "category": "governance_corruption", "confidence": "high"}, {"year_range": "2015-2021", "title": "Cabinet Secretary conviction over Rio 2016 preparation funds", "category": "governance_corruption", "confidence": "high"}, {"year_range": "2016", "title": "WADA non-compliance and Rio eligibility crisis", "category": "anti_doping_governance", "confidence": "high"}, {"year_range": "2016-2025", "title": "Systemic doping among sub-elite and elite Kenyan distance runners", "category": "doping", "confidence": "high"}, {"year_range": "2021", "title": "Killing of Agnes Tirop and the female-athlete exploitation pattern", "category": "athlete_welfare_gender", "confidence": "high"}, {"year_range": "1976-1980", "title": "Olympic boycotts of 1976 and 1980", "category": "politics_geopolitics", "confidence": "high"}, {"year_range": "2000-present", "title": "Nationality transfers of Kenyan-born runners", "category": "athlete_migration", "confidence": "medium"}]};
+
+// ---- summary stats ----
+const totalGold = DATA.games.reduce((s,g)=>s+g.gold,0);
+const totalSilver = DATA.games.reduce((s,g)=>s+g.silver,0);
+const totalBronze = DATA.games.reduce((s,g)=>s+g.bronze,0);
+const bestGames = DATA.games.reduce((a,b)=> b.total>a.total?b:a);
+document.getElementById('stat-row').innerHTML = `
+  <div class="stat"><div class="n">${totalGold}</div><div class="l">Gold medals</div></div>
+  <div class="stat"><div class="n">${totalSilver}</div><div class="l">Silver medals</div></div>
+  <div class="stat"><div class="n">${totalBronze}</div><div class="l">Bronze medals</div></div>
+  <div class="stat"><div class="n">${bestGames.host_city} ${bestGames.games_year}</div><div class="l">Best Games (${bestGames.total} medals)</div></div>
+`;
+
+// ---- medals per Games (stacked, gold highlighted) ----
+new Chart(document.getElementById('medalsChart'), {
+  type: 'bar',
+  data: {
+    labels: DATA.games.map(g => `${g.games_year}`),
+    datasets: [
+      { label: 'Gold', data: DATA.games.map(g=>g.gold), backgroundColor: '#D4AF37' },
+      { label: 'Silver', data: DATA.games.map(g=>g.silver), backgroundColor: '#9AA0A6' },
+      { label: 'Bronze', data: DATA.games.map(g=>g.bronze), backgroundColor: '#A97142' },
+    ]
+  },
+  options: {
+    responsive: true,
+    scales: { x: { stacked: true }, y: { stacked: true, title: { display:true, text:'Medals' } } },
+    plugins: { tooltip: { callbacks: { afterTitle: (items) => {
+      const g = DATA.games[items[0].dataIndex]; return g.host_city;
+    }}}}
+  }
+});
+
+// ---- golds by event ----
+const events = Object.entries(DATA.events_by_gold_count).sort((a,b)=>a[1]-b[1]);
+new Chart(document.getElementById('eventsChart'), {
+  type: 'bar',
+  data: {
+    labels: events.map(e=>e[0]),
+    datasets: [{ label: 'Gold medals', data: events.map(e=>e[1]), backgroundColor: '#006600' }]
+  },
+  options: { indexAxis: 'y', responsive: true,
+    plugins: { legend: { display: false } },
+    scales: { x: { title: { display:true, text:'Number of gold medals (1968-2024)' } } }
+  }
+});
+
+// ---- controversy timeline with category filter ----
+const categories = [...new Set(DATA.controversies.map(c=>c.category))];
+const filtersEl = document.getElementById('filters');
+let active = 'all';
+function renderTimeline() {
+  const list = DATA.controversies
+    .filter(c => active === 'all' || c.category === active)
+    .sort((a,b) => a.year_range.localeCompare(b.year_range));
+  document.getElementById('timeline').innerHTML = list.map(c => `
+    <li>
+      <span class="yr">${c.year_range}</span>
+      <span>${c.title}</span>
+      <span class="badge ${c.category}">${c.category.replace(/_/g,' ')}</span>
+    </li>`).join('');
+}
+function renderFilters() {
+  const all = ['all', ...categories];
+  filtersEl.innerHTML = all.map(c =>
+    `<button data-cat="${c}" class="${c===active?'active':''}">${c.replace(/_/g,' ')}</button>`
+  ).join('');
+  filtersEl.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      active = btn.dataset.cat;
+      renderFilters();
+      renderTimeline();
+    });
+  });
+}
+renderFilters();
+renderTimeline();
+</script>
+
+</body>
+</html>

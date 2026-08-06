@@ -1,0 +1,112 @@
+games_year,medal,sport,event,athlete_or_team,source
+1968,gold,Athletics,10000m,Naftali Temu,olympedia; World Athletics
+1968,gold,Athletics,3000m steeplechase,Amos Biwott,olympedia
+1968,gold,Athletics,1500m,Kipchoge Keino,olympedia; World Athletics
+1972,gold,Athletics,3000m steeplechase,Kipchoge Keino,olympedia
+1972,gold,Athletics,4x400m relay,Kenya (relay),olympedia
+1984,gold,Athletics,3000m steeplechase,Julius Korir,olympedia
+1988,gold,Athletics,1500m,Peter Rono,olympedia
+1988,gold,Athletics,800m,Paul Ereng,olympedia
+1988,gold,Athletics,5000m,John Ngugi,olympedia
+1988,gold,Athletics,3000m steeplechase,Julius Kariuki,olympedia
+1988,gold,Boxing,Welterweight,Robert Wangila,olympedia
+1992,gold,Athletics,3000m steeplechase,Matthew Birir,olympedia
+1992,gold,Athletics,800m,William Tanui,olympedia
+1996,gold,Athletics,3000m steeplechase,Joseph Keter,olympedia
+2000,gold,Athletics,3000m steeplechase,Reuben Kosgei,olympedia
+2000,gold,Athletics,1500m,Noah Ngeny,olympedia
+2004,gold,Athletics,3000m steeplechase,Ezekiel Kemboi,olympedia
+2008,gold,Athletics,800m,Wilfred Bungei,olympedia
+2008,gold,Athletics,1500m,Asbel Kiprop,olympedia; IOC reallocation
+2008,gold,Athletics,3000m steeplechase,Brimin Kipruto,olympedia
+2008,gold,Athletics,Marathon,Samuel Wanjiru,olympedia; World Athletics
+2008,gold,Athletics,1500m,Nancy Jebet Lang'at,olympedia
+2008,gold,Athletics,800m,Pamela Jelimo,olympedia
+2012,gold,Athletics,800m,David Rudisha,olympedia; World Athletics
+2012,gold,Athletics,3000m steeplechase,Ezekiel Kemboi,olympedia
+2016,gold,Athletics,800m,David Rudisha,olympedia
+2016,gold,Athletics,1500m,Faith Kipyegon,olympedia
+2016,gold,Athletics,3000m steeplechase,Conseslus Kipruto,olympedia
+2016,gold,Athletics,5000m,Vivian Cheruiyot,olympedia
+2016,gold,Athletics,Marathon,Eliud Kipchoge,olympedia
+2016,gold,Athletics,Marathon,Jemima Sumgong,olympedia; AIU
+2020,gold,Athletics,Marathon,Eliud Kipchoge,olympedia
+2020,gold,Athletics,1500m,Faith Kipyegon,olympedia
+2020,gold,Athletics,800m,Emmanuel Korir,olympedia
+2020,gold,Athletics,Marathon,Peres Jepchirchir,olympedia
+2024,gold,Athletics,1500m,Faith Kipyegon,olympedia; World Athletics
+2024,gold,Athletics,5000m,Beatrice Chebet,olympedia
+2024,gold,Athletics,10000m,Beatrice Chebet,olympedia
+2024,gold,Athletics,800m,Emmanuel Wanyonyi,olympedia
+1964,bronze,Athletics,Men's 800m,Wilson Kiprugut,wikipedia:Kenya_at_the_1964_Summer_Olympics
+1984,bronze,Athletics,"Men's 10,000 m",Mike Musyoki,wikipedia:Kenya_at_the_1984_Summer_Olympics
+1984,bronze,Boxing,Flyweight,Ibrahim Bilali,wikipedia:Kenya_at_the_1984_Summer_Olympics
+1988,silver,Athletics,Men's 3000 m steeplechase,Peter Koech,wikipedia:Kenya_at_the_1988_Summer_Olympics
+1988,silver,Athletics,Men's marathon,Douglas Wakiihuri,wikipedia:Kenya_at_the_1988_Summer_Olympics
+1988,bronze,Athletics,"Men's 10,000 m",Kipkemboi Kimeli,wikipedia:Kenya_at_the_1988_Summer_Olympics
+1988,bronze,Boxing,Men's middleweight (–75kg),Chris Sande,wikipedia:Kenya_at_the_1988_Summer_Olympics
+1992,silver,Athletics,"Men's 10,000 m",Richard Chelimo,wikipedia:Kenya_at_the_1992_Summer_Olympics
+1992,silver,Athletics,Men's 800 m,Nixon Kiprotich,wikipedia:Kenya_at_the_1992_Summer_Olympics
+1992,silver,Athletics,Men's 3000 m steeplechase,Patrick Sang,wikipedia:Kenya_at_the_1992_Summer_Olympics
+1992,silver,Athletics,Men's 5000 m,Paul Bitok,wikipedia:Kenya_at_the_1992_Summer_Olympics
+1992,bronze,Athletics,Men's 400 m,Samson Kitur,wikipedia:Kenya_at_the_1992_Summer_Olympics
+1992,bronze,Athletics,Men's 3000 m steeplechase,William Mutwol,wikipedia:Kenya_at_the_1992_Summer_Olympics
+1996,silver,Athletics,Women's 5000 m,Pauline Konga,wikipedia:Kenya_at_the_1996_Summer_Olympics
+1996,silver,Athletics,"Men's 10,000 m",Paul Tergat,wikipedia:Kenya_at_the_1996_Summer_Olympics
+1996,silver,Athletics,Men's 3000 m steeplechase,Moses Kiptanui,wikipedia:Kenya_at_the_1996_Summer_Olympics
+1996,silver,Athletics,Men's 5000 m,Paul Bitok,wikipedia:Kenya_at_the_1996_Summer_Olympics
+1996,bronze,Athletics,Men's 800 m,Fred Onyancha,wikipedia:Kenya_at_the_1996_Summer_Olympics
+1996,bronze,Athletics,Men's 1500 m,Stephen Kipkorir,wikipedia:Kenya_at_the_1996_Summer_Olympics
+1996,bronze,Athletics,Men's marathon,Erick Wainaina,wikipedia:Kenya_at_the_1996_Summer_Olympics
+2000,silver,Athletics,"Men's 10,000 m",Paul Tergat,wikipedia:Kenya_at_the_2000_Summer_Olympics
+2000,silver,Athletics,Men's 3000 m steeplechase,Wilson Boit Kipketer,wikipedia:Kenya_at_the_2000_Summer_Olympics
+2000,silver,Athletics,Men's marathon,Erick Wainaina,wikipedia:Kenya_at_the_2000_Summer_Olympics
+2000,bronze,Athletics,Women's marathon,Joyce Chepchumba,wikipedia:Kenya_at_the_2000_Summer_Olympics
+2000,bronze,Athletics,Men's 1500 m,Bernard Lagat,wikipedia:Kenya_at_the_2000_Summer_Olympics
+2004,silver,Athletics,Women's marathon,Catherine Ndereba,wikipedia:Kenya_at_the_2004_Summer_Olympics
+2004,silver,Athletics,Women's 5000 m,Isabella Ochichi,wikipedia:Kenya_at_the_2004_Summer_Olympics
+2004,silver,Athletics,Men's 1500 m,Bernard Lagat,wikipedia:Kenya_at_the_2004_Summer_Olympics
+2004,silver,Athletics,Men's 3000 m steeplechase,Brimin Kipruto,wikipedia:Kenya_at_the_2004_Summer_Olympics
+2004,bronze,Athletics,Men's 3000 m steeplechase,Paul Kipsiele Koech,wikipedia:Kenya_at_the_2004_Summer_Olympics
+2004,bronze,Athletics,Men's 5000 m,Eliud Kipchoge,wikipedia:Kenya_at_the_2004_Summer_Olympics
+2008,silver,Athletics,Women's 800 m,Janeth Jepkosgei,wikipedia:Kenya_at_the_2008_Summer_Olympics
+2008,silver,Athletics,Women's marathon,Catherine Ndereba,wikipedia:Kenya_at_the_2008_Summer_Olympics
+2008,silver,Athletics,Women's 3000 m steeplechase,Eunice Jepkorir,wikipedia:Kenya_at_the_2008_Summer_Olympics
+2008,silver,Athletics,Men's 5000 m,Eliud Kipchoge,wikipedia:Kenya_at_the_2008_Summer_Olympics
+2008,bronze,Athletics,Men's 3000 m steeplechase,Richard Mateelong,wikipedia:Kenya_at_the_2008_Summer_Olympics
+2008,bronze,Athletics,"Men's 10,000 m",Micah Kogo,wikipedia:Kenya_at_the_2008_Summer_Olympics
+2008,bronze,Athletics,Men's 800 m,Alfred Kirwa Yego,wikipedia:Kenya_at_the_2008_Summer_Olympics
+2008,bronze,Athletics,Men's 5000 m,Edwin Cheruiyot Soi,wikipedia:Kenya_at_the_2008_Summer_Olympics
+2008,bronze,Athletics,Women's 5000 metres,Sylvia Kibet,wikipedia:Kenya_at_the_2008_Summer_Olympics
+2008,bronze,Athletics,Women's 10000 metres,Linet Masai,wikipedia:Kenya_at_the_2008_Summer_Olympics
+2012,silver,Athletics,"Women's 10,000 m",Sally Kipyego,wikipedia:Kenya_at_the_2012_Summer_Olympics
+2012,silver,Athletics,Women's marathon,Priscah Jeptoo,wikipedia:Kenya_at_the_2012_Summer_Olympics
+2012,silver,Athletics,Women's 5000 m,Vivian Cheruiyot,wikipedia:Kenya_at_the_2012_Summer_Olympics
+2012,silver,Athletics,Men's marathon,Abel Kirui,wikipedia:Kenya_at_the_2012_Summer_Olympics
+2012,bronze,Athletics,"Women's 10,000 m",Vivian Cheruiyot,wikipedia:Kenya_at_the_2012_Summer_Olympics
+2012,bronze,Athletics,Men's 3000 m steeplechase,Abel Kiprop Mutai,wikipedia:Kenya_at_the_2012_Summer_Olympics
+2012,bronze,Athletics,Women's 3000 m steeplechase,Milcah Chemos Cheywa,wikipedia:Kenya_at_the_2012_Summer_Olympics
+2012,bronze,Athletics,Men's 800 m,Timothy Kitum,wikipedia:Kenya_at_the_2012_Summer_Olympics
+2012,bronze,Athletics,Men's 5000 metres,Thomas Longosiwa,wikipedia:Kenya_at_the_2012_Summer_Olympics
+2012,bronze,Athletics,Men's marathon,Wilson Kipsang,wikipedia:Kenya_at_the_2012_Summer_Olympics
+2012,bronze,Athletics,Women's 800 metres,Pamela Jelimo,wikipedia:Kenya_at_the_2012_Summer_Olympics
+2016,silver,Athletics,"Women's 10,000 m",Vivian Cheruiyot,wikipedia:Kenya_at_the_2016_Summer_Olympics
+2016,silver,Athletics,"Men's 10,000 m",Paul Tanui,wikipedia:Kenya_at_the_2016_Summer_Olympics
+2016,silver,Athletics,Women's 3000 m steeplechase,Hyvin Jepkemoi,wikipedia:Kenya_at_the_2016_Summer_Olympics
+2016,silver,Athletics,Men's 400 m hurdles,Boniface Mucheru,wikipedia:Kenya_at_the_2016_Summer_Olympics
+2016,silver,Athletics,Women's 5000 m,Hellen Obiri,wikipedia:Kenya_at_the_2016_Summer_Olympics
+2016,silver,Athletics,Men's javelin throw,Julius Yego,wikipedia:Kenya_at_the_2016_Summer_Olympics
+2016,bronze,Athletics,Women's 800 m,Margaret Wambui,wikipedia:Kenya_at_the_2016_Summer_Olympics
+2020,silver,Athletics,Women's 5000 metres,Hellen Obiri,wikipedia:Kenya_at_the_2020_Summer_Olympics
+2020,silver,Athletics,Men's 800 metres,Ferguson Rotich,wikipedia:Kenya_at_the_2020_Summer_Olympics
+2020,silver,Athletics,Women's marathon,Brigid Kosgei,wikipedia:Kenya_at_the_2020_Summer_Olympics
+2020,silver,Athletics,Men's 1500 metres,Timothy Cheruiyot,wikipedia:Kenya_at_the_2020_Summer_Olympics
+2020,bronze,Athletics,Men's 3000 metres steeplechase,Benjamin Kigen,wikipedia:Kenya_at_the_2020_Summer_Olympics
+2020,bronze,Athletics,Women's 3000 metres steeplechase,Hyvin Kiyeng Jepkemoi,wikipedia:Kenya_at_the_2020_Summer_Olympics
+2024,silver,Athletics,Women's 5000 m,Faith Kipyegon,wikipedia:Kenya_at_the_2024_Summer_Olympics
+2024,silver,Athletics,Men's 5000 m,Ronald Kwemoi,wikipedia:Kenya_at_the_2024_Summer_Olympics
+2024,bronze,Athletics,Women's 800 m,Mary Moraa,wikipedia:Kenya_at_the_2024_Summer_Olympics
+2024,bronze,Athletics,Women's 3000 m steeplechase,Faith Cherotich,wikipedia:Kenya_at_the_2024_Summer_Olympics
+2024,bronze,Athletics,Men's 3000 m steeplechase,Abraham Kibiwot,wikipedia:Kenya_at_the_2024_Summer_Olympics
+2024,bronze,Athletics,Men's marathon,Benson Kipruto,wikipedia:Kenya_at_the_2024_Summer_Olympics
+2024,bronze,Athletics,Women's marathon,Hellen Obiri,wikipedia:Kenya_at_the_2024_Summer_Olympics

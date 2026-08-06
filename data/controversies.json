@@ -1,0 +1,109 @@
+{
+  "schema_version": "0.1",
+  "note": "Each record is a verifiable, sourced incident. No synthetic entries. 'confidence' reflects strength of public documentation, not editorial judgement. Where a claim is contested, both the allegation and the response are recorded.",
+  "records": [
+    {
+      "id": "C-2015-AK-NIKE",
+      "year_range": "2015-2018",
+      "category": "governance_corruption",
+      "title": "Athletics Kenya diversion of Nike sponsorship funds",
+      "summary": "IAAF Ethics Board found that senior Athletics Kenya officials diverted Nike 'honorarium' and service payments — including a USD 500,000 commitment bonus — into a 'Clearance Account' used for personal benefit rather than athlete support.",
+      "people_implicated": ["Isaiah Kiplagat (AK President)", "David Okeyo (AK VP)", "Joseph Kinyua (AK Treasurer)"],
+      "outcome": "David Okeyo banned from track and field for life (2018). Officials denied wrongdoing, calling the contract 'executed with integrity'.",
+      "linked_medalists": [],
+      "confidence": "high",
+      "sources": [
+        "https://www.sportsintegrityinitiative.com/senior-officials-at-athletics-kenya-diverted-nike-payments/",
+        "https://feeds.bbci.co.uk/sport/athletics/34826145",
+        "https://amp.cbc.ca/sports/olympics/summer/athletics/iaaf-life-ban-corruption-okeyo-kenya-1.4804505"
+      ]
+    },
+    {
+      "id": "C-2016-RIO-SOI",
+      "year_range": "2016",
+      "category": "governance_corruption",
+      "title": "Rio 2016 chef de mission theft charges",
+      "summary": "Kenya's Olympic team leader was charged over the theft of KES 25.6 million (~USD 256,000) meant for athletes' and officials' accommodation in Rio; two other officials were charged over misappropriated Nike-supplied team uniforms.",
+      "people_implicated": ["Stephen Arap Soi (chef de mission)"],
+      "outcome": "Charged; denied the charges. Team Kenya's Rio campaign, despite topping African medal counts, was widely described as beset by mismanagement.",
+      "linked_medalists": [],
+      "confidence": "high",
+      "sources": ["https://feeds.bbci.co.uk/news/world-africa-37494559"]
+    },
+    {
+      "id": "C-2021-WARIO",
+      "year_range": "2015-2021",
+      "category": "governance_corruption",
+      "title": "Cabinet Secretary conviction over Rio 2016 preparation funds",
+      "summary": "Kenya's former Sports Cabinet Secretary Hassan Wario was convicted for diverting KES 58 million in Rio Olympic preparation funds.",
+      "people_implicated": ["Hassan Wario Arero (Cabinet Secretary for Sports)"],
+      "outcome": "Convicted (2021); sentenced to six years, commuted to a KES 50 million fine.",
+      "linked_medalists": [],
+      "confidence": "high",
+      "sources": ["https://grokipedia.com/page/ministry_of_sports_culture_and_the_arts"]
+    },
+    {
+      "id": "C-2016-WADA-NONCOMPLIANCE",
+      "year_range": "2016",
+      "category": "anti_doping_governance",
+      "title": "WADA non-compliance and Rio eligibility crisis",
+      "summary": "Kenya's national anti-doping organisation was declared non-compliant with the World Anti-Doping Code. The IOC ruled that Kenyan athletes' Rio eligibility be decided individually by each sport's international federation.",
+      "people_implicated": [],
+      "outcome": "Kenya avoided a blanket ban; subsequently established the Anti-Doping Agency of Kenya (ADAK) and criminalised doping-related conduct.",
+      "linked_medalists": [],
+      "confidence": "high",
+      "sources": ["https://en.wikipedia.org/wiki/Kenya_at_the_2016_Summer_Olympics"]
+    },
+    {
+      "id": "C-2016-2025-DOPING-WAVE",
+      "year_range": "2016-2025",
+      "category": "doping",
+      "title": "Systemic doping among sub-elite and elite Kenyan distance runners",
+      "summary": "The Athletics Integrity Unit characterises Kenya's problem as driven by a uniquely large 'pyramid' of professional-grade sub-elite runners for whom road-race prize money creates a doping market — distinct from state-sponsored models. More than 140-180 Kenyan athletes have been sanctioned since 2016.",
+      "people_implicated": ["Multiple athletes (e.g. Rhonex Kipruto, Ruth Chepngetich, Albert Korir — road/championship cases)"],
+      "outcome": "Kenyan government committed ~USD 5 million per year for five years to anti-doping; AIU began a five-year remediation plan; first lifetime ban issued 2024 (Beatrice Toroitich).",
+      "linked_medalists": ["Jemima Sumgong (2016 marathon gold; 2017 EPO ban, retained Olympic title)", "Asbel Kiprop (2008 1500m gold; 2019 ban in separate case)"],
+      "confidence": "high",
+      "sources": [
+        "https://thehill.com/homenews/ap/ap-sports/ap-kenyas-crisis-is-unique-and-driven-by-poverty-track-and-fields-anti-doping-head-tells-the-ap/",
+        "https://runningmagazine.ca/the-scene/is-depth-of-talent-the-issue-behind-kenyas-doping-scandal/"
+      ]
+    },
+    {
+      "id": "C-2021-TIROP-WELFARE",
+      "year_range": "2021",
+      "category": "athlete_welfare_gender",
+      "title": "Killing of Agnes Tirop and the female-athlete exploitation pattern",
+      "summary": "The murder of world-class runner Agnes Tirop (aged 25), with her husband named a key suspect, drew attention to financial exploitation and violence faced by Kenyan female athletes — who frequently serve as primary breadwinners for extended families while facing exploitation by coaches, agents and relatives.",
+      "people_implicated": [],
+      "outcome": "National conversation on athlete welfare; contributed to later welfare-policy commitments. Handled here as a welfare/gender structural issue, not a true-crime item.",
+      "linked_medalists": [],
+      "confidence": "high",
+      "sources": ["https://www.malaymail.com/news/sports/2021/10/22/kenya-runners-death-highlights-pressures-faced-by-female-athletes/2015263"]
+    },
+    {
+      "id": "C-1976-1980-BOYCOTTS",
+      "year_range": "1976-1980",
+      "category": "politics_geopolitics",
+      "title": "Olympic boycotts of 1976 and 1980",
+      "summary": "Kenya did not compete at Montreal 1976 (African boycott over New Zealand's sporting ties to apartheid South Africa) or Moscow 1980 (US-led boycott), removing two Games from its medal record at the height of a strong distance-running generation.",
+      "people_implicated": [],
+      "outcome": "Widely cited as costing Kenya an unknown number of likely medals (e.g. Henry Rono's era).",
+      "linked_medalists": [],
+      "confidence": "high",
+      "sources": ["https://www.olympedia.org/countries/KEN"]
+    },
+    {
+      "id": "C-NATIONALITY-TRANSFERS",
+      "year_range": "2000-present",
+      "category": "athlete_migration",
+      "title": "Nationality transfers of Kenyan-born runners",
+      "summary": "A sustained pattern of Kenyan-born runners switching allegiance to Gulf states (Bahrain, Qatar) and others, driven by financial incentives and the depth of Kenyan competition. Some athletes later sought to reclaim Kenyan citizenship after negative experiences.",
+      "people_implicated": [],
+      "outcome": "Ongoing policy and identity questions; documented in academic labour-migration literature.",
+      "linked_medalists": [],
+      "confidence": "medium",
+      "sources": ["https://www.researchgate.net/publication/26756967_East_African_Runners_Their_Genetics_Lifestyle_and_Athletic_Prowess"]
+    }
+  ]
+}

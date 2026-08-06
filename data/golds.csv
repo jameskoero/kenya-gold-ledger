@@ -1,0 +1,40 @@
+medal_id,games_year,host_city,sport,event,sex,athlete_or_team,result,is_relay,relay_members,record_at_time,reallocated,notes,confidence,source
+G1968-01,1968,Mexico City,Athletics,10000m,M,Naftali Temu,29:27.4,FALSE,,,FALSE,"Kenya's first-ever Olympic gold; beat Mamo Wolde (ETH) over final 50m",high,"olympedia; World Athletics"
+G1968-02,1968,Mexico City,Athletics,3000m steeplechase,M,Amos Biwott,8:51.0,FALSE,,,FALSE,"Unorthodox water-jump technique; first of an unbroken steeplechase medal streak",high,olympedia
+G1968-03,1968,Mexico City,Athletics,1500m,M,Kipchoge Keino,3:34.9,FALSE,,OR,FALSE,"Beat world-record holder Jim Ryun by ~20m; ran despite gallbladder infection",high,"olympedia; World Athletics"
+G1972-01,1972,Munich,Athletics,3000m steeplechase,M,Kipchoge Keino,8:23.6,FALSE,,OR,FALSE,"Keino's second Olympic gold, different event",high,olympedia
+G1972-02,1972,Munich,Athletics,4x400m relay,M,Kenya (relay),2:59.8,TRUE,"Charles Asati; Munyoro Nyamau; Robert Ouko; Julius Sang",,FALSE,"Kenya's only Olympic relay gold to date",high,olympedia
+G1984-01,1984,Los Angeles,Athletics,3000m steeplechase,M,Julius Korir,8:11.80,FALSE,,,FALSE,"Kenya's sole gold at the LA Games",high,olympedia
+G1988-01,1988,Seoul,Athletics,1500m,M,Peter Rono,3:35.96,FALSE,,,FALSE,"",high,olympedia
+G1988-02,1988,Seoul,Athletics,800m,M,Paul Ereng,1:43.45,FALSE,,,FALSE,"Converted 400m runner turned 800m champion",high,olympedia
+G1988-03,1988,Seoul,Athletics,5000m,M,John Ngugi,13:11.70,FALSE,,,FALSE,"",high,olympedia
+G1988-04,1988,Seoul,Athletics,3000m steeplechase,M,Julius Kariuki,8:05.51,FALSE,,OR,FALSE,"",high,olympedia
+G1988-05,1988,Seoul,Boxing,Welterweight,M,Robert Wangila,,FALSE,,,FALSE,"Kenya's ONLY Olympic gold outside athletics; won by KO in final; died 1994",high,olympedia
+G1992-01,1992,Barcelona,Athletics,3000m steeplechase,M,Matthew Birir,8:08.84,FALSE,,,FALSE,"Kenyan steeplechase sweep (gold-silver-bronze) in 1992",high,olympedia
+G1992-02,1992,Barcelona,Athletics,800m,M,William Tanui,1:43.66,FALSE,,,FALSE,"",high,olympedia
+G1996-01,1996,Atlanta,Athletics,3000m steeplechase,M,Joseph Keter,8:07.12,FALSE,,,FALSE,"",high,olympedia
+G2000-01,2000,Sydney,Athletics,3000m steeplechase,M,Reuben Kosgei,8:21.43,FALSE,,,FALSE,"",high,olympedia
+G2000-02,2000,Sydney,Athletics,1500m,M,Noah Ngeny,3:32.07,FALSE,,OR,FALSE,"Beat Hicham El Guerrouj (MAR) in the final",high,olympedia
+G2004-01,2004,Athens,Athletics,3000m steeplechase,M,Ezekiel Kemboi,8:05.81,FALSE,,,FALSE,"First of Kemboi's two Olympic golds (2004, 2012)",high,olympedia
+G2008-01,2008,Beijing,Athletics,800m,M,Wilfred Bungei,1:44.65,FALSE,,,FALSE,"",high,olympedia
+G2008-02,2008,Beijing,Athletics,1500m,M,Asbel Kiprop,3:33.11,FALSE,,,TRUE,"Originally silver; elevated to gold after winner Rashid Ramzi (BRN) stripped for CERA doping. Kiprop himself later banned (2019) in a separate post-career case",high,"olympedia; IOC reallocation"
+G2008-03,2008,Beijing,Athletics,3000m steeplechase,M,Brimin Kipruto,8:10.34,FALSE,,,FALSE,"",high,olympedia
+G2008-04,2008,Beijing,Athletics,Marathon,M,Samuel Wanjiru,2:06:32,FALSE,,OR,FALSE,"First Kenyan Olympic marathon gold; Wanjiru died aged 24 in 2011 (fall from balcony; circumstances disputed)",high,"olympedia; World Athletics"
+G2008-05,2008,Beijing,Athletics,1500m,W,Nancy Jebet Lang'at,4:00.23,FALSE,,,FALSE,"",high,olympedia
+G2008-06,2008,Beijing,Athletics,800m,W,Pamela Jelimo,1:54.87,FALSE,,,FALSE,"Kenya's first female Olympic gold medalist",high,olympedia
+G2012-01,2012,London,Athletics,800m,M,David Rudisha,1:40.91,FALSE,,WR,FALSE,"World record still standing; widely called one of the greatest 800m runs ever",high,"olympedia; World Athletics"
+G2012-02,2012,London,Athletics,3000m steeplechase,M,Ezekiel Kemboi,8:18.56,FALSE,,,FALSE,"Kemboi's second Olympic gold, 8 years after his first",high,olympedia
+G2016-01,2016,Rio de Janeiro,Athletics,800m,M,David Rudisha,1:42.15,FALSE,,,FALSE,"Rudisha's second consecutive 800m Olympic title",high,olympedia
+G2016-02,2016,Rio de Janeiro,Athletics,1500m,W,Faith Kipyegon,4:08.92,FALSE,,,FALSE,"First of Kipyegon's three (and counting) 1500m Olympic golds",high,olympedia
+G2016-03,2016,Rio de Janeiro,Athletics,3000m steeplechase,M,Conseslus Kipruto,8:03.28,FALSE,,OR,FALSE,"",high,olympedia
+G2016-04,2016,Rio de Janeiro,Athletics,5000m,W,Vivian Cheruiyot,14:26.17,FALSE,,OR,FALSE,"",high,olympedia
+G2016-05,2016,Rio de Janeiro,Athletics,Marathon,M,Eliud Kipchoge,2:08:44,FALSE,,,FALSE,"First of Kipchoge's two consecutive Olympic marathon golds",high,olympedia
+G2016-06,2016,Rio de Janeiro,Athletics,Marathon,W,Jemima Sumgong,2:24:04,FALSE,,,FALSE,"First Kenyan woman to win Olympic marathon gold; banned for EPO in 2017 (out-of-competition), but retained this Olympic title",high,"olympedia; AIU"
+G2020-01,2020,Tokyo,Athletics,Marathon,M,Eliud Kipchoge,2:08:38,FALSE,,,FALSE,"Second consecutive Olympic marathon gold",high,olympedia
+G2020-02,2020,Tokyo,Athletics,1500m,W,Faith Kipyegon,3:53.11,FALSE,,,FALSE,"Second consecutive 1500m Olympic gold",high,olympedia
+G2020-03,2020,Tokyo,Athletics,800m,M,Emmanuel Korir,1:45.06,FALSE,,,FALSE,"",high,olympedia
+G2020-04,2020,Tokyo,Athletics,Marathon,W,Peres Jepchirchir,2:27:20,FALSE,,,FALSE,"",high,olympedia
+G2024-01,2024,Paris,Athletics,1500m,W,Faith Kipyegon,3:51.29,FALSE,,,FALSE,"Third consecutive 1500m Olympic gold — first woman to achieve this in the event",high,"olympedia; World Athletics"
+G2024-02,2024,Paris,Athletics,5000m,W,Beatrice Chebet,14:28.56,FALSE,,,FALSE,"First of two Paris golds",high,olympedia
+G2024-03,2024,Paris,Athletics,10000m,W,Beatrice Chebet,,FALSE,,,FALSE,"Second Paris gold — 5000m/10000m double",high,olympedia
+G2024-04,2024,Paris,Athletics,800m,M,Emmanuel Wanyonyi,1:41.19,FALSE,,,FALSE,"Continued Kenya's men's 800m dynasty",high,olympedia
