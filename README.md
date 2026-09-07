@@ -330,10 +330,6 @@ See full [`docs/methodology.md`](docs/methodology.md).
 
 [![GitHub](https://img.shields.io/badge/GitHub-jameskoero-181717?style=flat-square&logo=github)](https://github.com/jameskoero) [![LinkedIn](https://img.shields.io/badge/LinkedIn-jameskoero-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/jameskoero)
 
-Academic collaborators:
-- **Prof. Samuel Liyala** -- JOOUST, Kenya
-- **Prof. Johan Loeckx** -- Vrije Universiteit Brussel (VUB AI Lab), Belgium
-
 ---
 
 ## 📜 License
