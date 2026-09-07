@@ -1,132 +1,348 @@
-# Kenya at Gold: The Governance Ledger
+# 🏅 Kenya at Gold: The Governance Ledger
 
-**An open, structured, source-linked dataset connecting Kenya's Olympic medal record to its governance, doping, welfare, and policy history — built to be queried, visualized, modeled, and cited. Now also a live API and dashboard, not just a static archive.**
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-ComplementNB-F7931E?style=for-the-badge)](https://scikit-learn.org)
+[![License](https://img.shields.io/badge/License-MIT-C9A84C?style=for-the-badge)](LICENSE)
+[![Data](https://img.shields.io/badge/Data-100%25%20Open%20(CC--BY--4.0)-2ECC71?style=for-the-badge)](data)
 
-**Live:** [API](https://kenya-gold-ledger-api.onrender.com/docs) · [Dashboard](https://kenya-gold-ledger.vercel.app)
+[![Docs](https://img.shields.io/badge/API%20Docs-Swagger-85EA2D?style=flat-square&logo=swagger&logoColor=black)](https://kenya-gold-ledger-api.onrender.com/docs)
+[![Live API](https://img.shields.io/badge/Live%20API-Render-46E3B7?style=flat-square&logo=render)](https://kenya-gold-ledger-api.onrender.com)
+[![Dashboard](https://img.shields.io/badge/Dashboard-Live%20on%20Vercel-000000?style=flat-square&logo=vercel)](https://kenya-gold-ledger.vercel.app)
+[![Governance Framework](https://img.shields.io/badge/Governance-SGO%2FNSGO%20aligned-1E2327?style=flat-square)](data/sgo_framework.json)
 
-Kenya has won **124 Olympic medals** (39 gold, 45 silver, 40 bronze through Paris 2024), the highest of any African nation, and nearly all of them from distance running. That story is told everywhere. What isn't told, in any single structured place, is the connective tissue: the diverted sponsorship funds, the anti-doping collapse and recovery, the athletes who die broke or violently, the training system that produces world records in villages with no track, and what the state actually does with the reputational capital its runners generate.
+**An open, structured, source-linked dataset connecting Kenya's Olympic medal record to its governance, doping, welfare, and policy history — cross-referenced against the peer-reviewed Sports Governance Observer framework, served live as an API and dashboard, not just static files.**
 
-This repository is that place. It treats **every medal as a separately catalogued earning** — with the year, the person(s) awarded, and the surrounding context — and gives **gold medals the highest level of detail**, because the gold is the unit around which the whole national narrative is built.
+> Every medal individually catalogued. Every controversy sourced, dated, and confidence-rated. **No synthetic data anywhere** — where a value isn't verifiable from a real source, it's flagged, not invented.
 
-**Jump to:** [What's different](#what-makes-this-different-from-anything-else-out-there) · [What's in here](#whats-in-here) · [Live API and dashboard](#live-api-and-dashboard) · [Headline analytics](#headline-analytics-all-from-the-datasets-reproducible) · [The ML dimension](#the-ml-dimension) · [Data integrity](#data-integrity) · [Licensing](#licensing) · [Citing this work](#citing-this-work) · [Setup](#setup) · [Status](#status)
+---
 
-## What makes this different from anything else out there
+## 🔴 Live Deployments
 
-I looked. Olympic datasets are common on GitHub and Kaggle; none are Kenya-specific, and none go past medal counts. The academic literature on Kenyan running (Onywera, Pitsiladis, Tucker and others) is rigorous but answers a physiological and sociocultural question, not a governance one. Sports governance benchmarking exists (Play the Game/KU Leuven's Sports Governance Observer), but it has never been applied to Kenyan athletics specifically. So this repo adds five things I haven't seen done anywhere else, for this country or this sport:
+| Service | URL | Status |
+|---|---|---|
+| **API** | [kenya-gold-ledger-api.onrender.com/docs](https://kenya-gold-ledger-api.onrender.com/docs) | ✅ Live — Python (FastAPI) on Render |
+| **SGO Governance Framework endpoint** | [`/governance/sgo-framework`](https://kenya-gold-ledger-api.onrender.com/governance/sgo-framework) | ✅ Live — 4 dimensions |
+| **Controversies endpoint** | [`/governance/controversies`](https://kenya-gold-ledger-api.onrender.com/governance/controversies) | ✅ Live — 12 sourced records |
+| **Dashboard** | [kenya-gold-ledger.vercel.app](https://kenya-gold-ledger.vercel.app) | ✅ Live — static, fetches from the API in real time |
 
-1. **An SGO-aligned governance scorecard** ([`data/sgo_framework.json`](data/sgo_framework.json)) — the first application of the peer-reviewed Sports Governance Observer / National Sports Governance Observer methodology (transparency, democratic processes, internal accountability and control, societal responsibility) to Athletics Kenya and ADAK, rather than a self-invented metric.
-2. **A governance network graph** ([`notebooks/02_network_analysis.py`](notebooks/02_network_analysis.py)) — officials, athletes, and incidents as a graph instead of a list, so recurrence across scandals is visible rather than buried in separate news stories.
-3. **A governance-vs-medals overlay** ([`notebooks/03_governance_density.py`](notebooks/03_governance_density.py)) — gold medal counts and documented incident density plotted on the same timeline per Games cycle, so the relationship (or its absence) is something you can look at, not something asserted.
-4. **A transparent Governance Response Scorecard** ([`notebooks/04_governance_scorecard.py`](notebooks/04_governance_scorecard.py)) — for each era, a plain count of documented problems against documented institutional responses, with every item listed out rather than compressed into an opaque single score. The 2021-2025 era's response ratio (1.67, versus 0.4 in 2016-2020) is the kind of number a sports ministry, a NOC, or an oversight committee could actually use — and the dataset now includes a complete real-world test case for this exact methodology: WADA's September 2025 non-compliance declaration against Kenya/ADAK, followed by its 2026 clearance after a documented corrective action plan.
-5. **A live, queryable API and dashboard** ([`backend/`](backend), [`frontend/`](frontend)) — every dataset and the trained ML classifier served over HTTP, plus a browser dashboard that fetches live rather than embedding a static snapshot. Medal history, gold concentration by event, and a filterable governance/doping timeline, all from the same open data. Built for fans, journalists, and researchers as much as for developers.
+> ⚠️ The API runs on Render's free tier — first request after idle may take 30–60s to cold-start. Subsequent requests return quickly.
 
-## What's in here
-
-The tree below is a map, not a link list — GitHub doesn't render links inside code blocks, so use the linked references right after it (or just browse the repo directly) to jump to any specific file.
-
-```
-data/
-  medals_by_games.csv       Per-Games gold/silver/bronze totals, 1956-2024 (verified, Olympedia)
-  golds.csv                 Every one of the 39 golds, individually catalogued (the highlight)
-  all_medals.csv            Every medal as one row; golds verified, silver/bronze via builder
-  build_all_medals.py       Reproducible scraper that completes all_medals.csv from source
-  controversies.json        Sourced governance/doping/welfare incidents, 2015-2026 (schema v0.2)
-  sgo_framework.json        Sports Governance Observer framework, adapted for AK/ADAK
-  talent_geography_study.json  Published talent-origin study, for validating medalist_origins.csv
-  policy_timeline.csv        Government actions and real budget figures by year
-  funding_vs_output.csv      Medals vs doping context vs funding, per Games
-  governance_scorecard.csv   Output of the transparent scorecard (see below)
-  corpus_labels.jsonl        REAL labelled news corpus for the ML classifier
-  geo/
-    kenya_counties.csv       County reference (region, coordinates)
-    medalist_origins.csv     Athlete -> birthplace county (verified seed)
-  build_medalist_origins.py  Reproducible builder that enriches origins from source
-backend/
-  app.py                    FastAPI app serving every dataset + the ML classifier as live endpoints
-  migrate_to_sqlite.py       Builds the queryable database the API reads from
-  requirements.txt          Pinned dependencies
-  render.yaml                Render deployment blueprint (free tier)
-frontend/
-  index.html                 Static dashboard, fetches live from the API (no embedded data)
-  vercel.json                 Deployment config (Vercel, static)
-nlp/
-  collect_corpus.py          Fetches article text (robots-aware, rate-limited, gitignored cache)
-  train.py                   Trains + cross-validates the classifier on the corpus
-  controversy_classifier.py  Inference wrapper; load_trained() uses the real model
-notebooks/
-  01_medal_analysis.py      Reproducible core analysis; regenerates figs 1-4
-  02_network_analysis.py    Governance network graph (fig 5)
-  03_governance_density.py  Medals-vs-incidents overlay (fig 6)
-  04_governance_scorecard.py Transparent scorecard
-docs/
-  methodology.md            Sourcing rules and confidence model
-  literature-review.md       How this positions against existing scholarship
-  data-schema.md            Field definitions for every dataset
-  concept.md                Full concept and reframing
-manuscript/                 Draft academic publication
-viz/                        Generated charts + dashboard.html
-sources/                    Citation manifest
+**Confirmed root response** (`GET /`):
+```json
+{
+  "name": "Kenya at Gold: The Governance Ledger -- API",
+  "repo": "https://github.com/jameskoero/kenya-gold-ledger",
+  "docs": "/docs",
+  "endpoints": [
+    "/medals/by-games", "/medals/golds", "/medals/all",
+    "/governance/controversies", "/governance/policy-timeline",
+    "/governance/scorecard", "/governance/sgo-framework",
+    "/geo/medalist-origins", "/predict/controversy-category"
+  ]
+}
 ```
 
-**Direct links to everything in the tree above:**
-[`data/medals_by_games.csv`](data/medals_by_games.csv) · [`data/golds.csv`](data/golds.csv) · [`data/all_medals.csv`](data/all_medals.csv) · [`data/build_all_medals.py`](data/build_all_medals.py) · [`data/controversies.json`](data/controversies.json) · [`data/sgo_framework.json`](data/sgo_framework.json) · [`data/talent_geography_study.json`](data/talent_geography_study.json) · [`data/policy_timeline.csv`](data/policy_timeline.csv) · [`data/funding_vs_output.csv`](data/funding_vs_output.csv) · [`data/governance_scorecard.csv`](data/governance_scorecard.csv) · [`data/corpus_labels.jsonl`](data/corpus_labels.jsonl) · [`data/geo/kenya_counties.csv`](data/geo/kenya_counties.csv) · [`data/geo/medalist_origins.csv`](data/geo/medalist_origins.csv) · [`data/build_medalist_origins.py`](data/build_medalist_origins.py) · [`backend/app.py`](backend/app.py) · [`backend/migrate_to_sqlite.py`](backend/migrate_to_sqlite.py) · [`frontend/index.html`](frontend/index.html) · [`nlp/collect_corpus.py`](nlp/collect_corpus.py) · [`nlp/train.py`](nlp/train.py) · [`nlp/controversy_classifier.py`](nlp/controversy_classifier.py) · [`notebooks/01_medal_analysis.py`](notebooks/01_medal_analysis.py) · [`notebooks/02_network_analysis.py`](notebooks/02_network_analysis.py) · [`notebooks/03_governance_density.py`](notebooks/03_governance_density.py) · [`notebooks/04_governance_scorecard.py`](notebooks/04_governance_scorecard.py) · [`docs/methodology.md`](docs/methodology.md) · [`docs/literature-review.md`](docs/literature-review.md) · [`docs/data-schema.md`](docs/data-schema.md) · [`docs/concept.md`](docs/concept.md) · [`manuscript/`](manuscript) · [`viz/`](viz) · [`sources/`](sources)
+---
 
-## Live API and dashboard
+## 📌 Table of Contents
 
-The dataset is no longer only static files — it's also served live:
+- [Project Overview](#-project-overview)
+- [What Makes This Different](#-what-makes-this-different)
+- [Headline Analytics](#-headline-analytics)
+- [Dataset](#-dataset)
+- [Architecture](#️-architecture)
+- [Project Structure](#-project-structure)
+- [Local Setup](#️-local-setup)
+- [API Reference](#-api-reference)
+- [Live Dashboard](#️-live-dashboard)
+- [Governance Framework (SGO/NSGO)](#-governance-framework-sgonsgo)
+- [Data Integrity & Sourcing](#-data-integrity--sourcing)
+- [Roadmap](#️-roadmap)
+- [Author](#-author)
+- [License](#-license)
 
-- **API** — [`kenya-gold-ledger-api.onrender.com`](https://kenya-gold-ledger-api.onrender.com/docs) (FastAPI, OpenAPI docs at `/docs`). Endpoints include `/medals/golds`, `/medals/all`, `/governance/controversies`, `/governance/sgo-framework`, `/governance/scorecard`, `/geo/medalist-origins`, and a `POST /predict/controversy-category` endpoint that runs the trained classifier on arbitrary text.
-- **Dashboard** — [`kenya-gold-ledger.vercel.app`](https://kenya-gold-ledger.vercel.app) — fetches from the live API at load time rather than embedding a snapshot, so it stays current as the dataset grows.
-- Hosted on free tiers (Render + Vercel): the API may take up to ~50 seconds to wake up after a period of inactivity — this is a cold-start delay, not a fault.
-- Full deployment instructions, including a from-scratch rebuild path, are in [`DEPLOYMENT.md`](DEPLOYMENT.md).
+---
 
-## Headline analytics (all from the datasets, reproducible)
+## 🌍 Project Overview
+
+Kenya has won **124 Olympic medals** (39 gold, 45 silver, 40 bronze through Paris 2024) — the highest of any African nation, and nearly all of them from distance running. That story is told everywhere. What isn't told, in any single structured place, is the connective tissue: the diverted sponsorship funds, the anti-doping collapse and recovery, the athletes who die broke or violently, the training system that produces world records in villages with no track, and what the state actually does with the reputational capital its runners generate.
+
+This repository is that place — every medal catalogued as a separate earning, gold medals given the highest level of detail, and the whole record cross-referenced against a real, peer-reviewed governance benchmarking methodology instead of an invented metric.
+
+**Coverage:** All Kenyan Olympic medals 1964–2024 · governance/doping/welfare incidents 2015–2026 · SGO/NSGO governance framework applied to Athletics Kenya and ADAK
+
+---
+
+## 🏆 What Makes This Different
+
+I looked. Olympic datasets are common on GitHub and Kaggle; none are Kenya-specific, and none go past medal counts. Sports governance benchmarking exists (Play the Game/KU Leuven's Sports Governance Observer), but it has never been applied to Kenyan athletics specifically.
+
+| # | Feature | Why it's novel |
+|---|---|---|
+| 1 | **SGO-aligned governance scorecard** ([`data/sgo_framework.json`](data/sgo_framework.json)) | First application of the peer-reviewed SGO/NSGO methodology to Athletics Kenya and ADAK |
+| 2 | **Governance network graph** ([`notebooks/02_network_analysis.py`](notebooks/02_network_analysis.py)) | Officials, athletes, and incidents as a graph, so recurrence across scandals is visible |
+| 3 | **Governance-vs-medals overlay** ([`notebooks/03_governance_density.py`](notebooks/03_governance_density.py)) | Medal counts and incident density on the same timeline, per Games cycle |
+| 4 | **Governance Response Scorecard** ([`notebooks/04_governance_scorecard.py`](notebooks/04_governance_scorecard.py)) | Documented problems vs. documented institutional responses, fully itemised — includes the complete real-world WADA 2025 crisis → 2026 clearance test case |
+| 5 | **Live API + dashboard** ([`backend/`](backend), [`frontend/`](frontend)) | Every dataset and the trained ML classifier served over HTTP; dashboard fetches live, never embeds a stale snapshot |
+
+---
+
+## 📊 Headline Analytics
 
 Running [`python notebooks/01_medal_analysis.py`](notebooks/01_medal_analysis.py) regenerates these from the raw CSVs:
 
-- **97.4%** of Kenya's Olympic golds are in athletics; the only exception is Robert Wangila's 1988 boxing gold.
-- **25.6%** of golds have been won by women — every one of them since Pamela Jelimo in 2008.
-- **11 of 39 golds** are in the men's 3000m steeplechase alone — the single most productive event in Kenyan Olympic history.
-- Best-ever haul: **16 medals at Beijing 2008**; joint-best gold count: **6, at both Beijing 2008 and Rio 2016**.
+| Metric | Value |
+|---|---|
+| Golds in athletics | **97.4%** (only exception: Robert Wangila's 1988 boxing gold) |
+| Golds won by women | **25.6%** — every one since Pamela Jelimo, 2008 |
+| Golds in men's 3000m steeplechase | **11 of 39** — most productive single event |
+| Best-ever medal haul | **16 medals, Beijing 2008** |
+| Joint-best gold count | **6, Beijing 2008 and Rio 2016** |
+| Governance response ratio, 2021–2025 era | **1.67** (vs. 0.40 in 2016–2020) |
+| Sourced controversy records | **12**, spanning 2015–2026, schema v0.2 |
 
 ![Medals per Games](viz/fig1_medals_per_games.png)
 
-## The ML dimension
+---
 
-This is not a static archive. The [`nlp/`](nlp) pipeline **classifies real news coverage** into controversy categories — corruption, doping, anti-doping governance, welfare/gender, geopolitics, migration — so the [`controversies.json`](data/controversies.json) timeline can update from evidence rather than manual curation. It trains on [`data/corpus_labels.jsonl`](data/corpus_labels.jsonl), a corpus of **real published articles** (BBC, AP, Sports Illustrated, Daily Nation, World Athletics and others), not a synthetic seed set. [`collect_corpus.py`](nlp/collect_corpus.py) fetches full article text at runtime (robots-aware, rate-limited, cached locally and never committed for copyright reasons); [`train.py`](nlp/train.py) cross-validates and reports honest per-class metrics. The trained model is also served live via the API's `/predict/controversy-category` endpoint.
+## 📁 Dataset
 
-The baseline is TF-IDF + Complement Naive Bayes, chosen after measuring it against several alternatives — see [`nlp/README.md`](nlp/README.md) for the comparison. Its numbers are reported honestly: strong on the well-populated classes (doping, corruption), weak on classes with only two examples — which is the correct behaviour of a small-corpus baseline and the reason "grow the corpus" is the documented next task. The interface is model-agnostic, so a fine-tuned transformer drops in later.
+All data carries a `source` field and a `confidence` rating. **No synthetic data is used anywhere.**
 
-Analytical layers (see [`docs/methodology.md`](docs/methodology.md)): time-series of funding vs medal output vs sanction counts, geospatial clustering of medalist origin (via [`data/geo/`](data/geo), now cross-validated against a published talent-origin study in [`data/talent_geography_study.json`](data/talent_geography_study.json)) against county indicators, and network analysis of officials/federations/sanctioned athletes to show how few names recur across scandals.
+| File | Description |
+|---|---|
+| [`golds.csv`](data/golds.csv) | All 39 golds, individually catalogued, verified |
+| [`medals_by_games.csv`](data/medals_by_games.csv) | Per-Games totals, 1956–2024 (Olympedia) |
+| [`all_medals.csv`](data/all_medals.csv) | Every medal as one row |
+| [`controversies.json`](data/controversies.json) | 12 sourced governance/doping/welfare incidents, 2015–2026, schema v0.2 |
+| [`sgo_framework.json`](data/sgo_framework.json) | Sports Governance Observer framework, adapted for Athletics Kenya/ADAK |
+| [`talent_geography_study.json`](data/talent_geography_study.json) | Published talent-origin study, for validating `medalist_origins.csv` |
+| [`policy_timeline.csv`](data/policy_timeline.csv) | Government actions and real budget figures by year |
+| [`funding_vs_output.csv`](data/funding_vs_output.csv) | Medals vs. doping context vs. funding, per Games |
+| [`governance_scorecard.csv`](data/governance_scorecard.csv) | Output of the transparent scorecard |
+| [`corpus_labels.jsonl`](data/corpus_labels.jsonl) | Real labelled news corpus for the ML classifier |
+| [`geo/kenya_counties.csv`](data/geo/kenya_counties.csv) · [`geo/medalist_origins.csv`](data/geo/medalist_origins.csv) | County reference and athlete birthplace mapping |
 
-## Data integrity
+---
 
-Every row carries a `source`, and every claim in [`controversies.json`](data/controversies.json) carries a `confidence` level reflecting the strength of public documentation. **No synthetic data is used anywhere.** Where sources disagree — for example, Olympedia records Kenya's totals as 39-45-40 while some Wikipedia tables show 39-44-41, owing to differing treatment of relay and boxing medals — the discrepancy is recorded, not silently resolved. `controversies.json` is now on schema v0.2, extending original coverage (2015-2021) through the escalating 2022-2024 AIU/ADAK sanction trend, the 2025 WADA non-compliance crisis, and the 2026 clearance — 12 records total, all independently sourced. See [`docs/methodology.md`](docs/methodology.md).
+## 🏗️ Architecture
 
-## Licensing
+```
+Static, sourced data (data/*.csv, *.json)
+        |
+        v
++--------------------------------------------+
+|         migrate_to_sqlite.py                |
+|   Builds backend/kenya_gold_ledger.db       |
+|   from every CSV + JSON file, no invented   |
+|   rows -- missing sources are skipped       |
++--------------------------------------------+
+        |
+        v
++--------------------------------------------+
+|              FastAPI (backend/app.py)       |
+|   /medals/*  /governance/*  /geo/*          |
+|   POST /predict/controversy-category        |
+|   (TF-IDF + ComplementNB classifier)        |
++--------------------------------------------+
+        |  CORS locked to the dashboard origin
+        v
++--------------------------------------------+
+|      Static dashboard (frontend/index.html) |
+|      Fetches live -- no embedded snapshot   |
++--------------------------------------------+
+```
 
-- **Code** ([`nlp/`](nlp), [`notebooks/`](notebooks), [`backend/`](backend), [`frontend/`](frontend)): MIT.
-- **Data and documentation** ([`data/`](data), [`docs/`](docs)): Creative Commons Attribution 4.0 (CC-BY 4.0), so the dataset is freely reusable and citable with attribution.
+---
 
-Full text: [`LICENSE`](LICENSE).
+## 📂 Project Structure
 
-## Citing this work
+```
+kenya-gold-ledger/
+├── data/
+│   ├── golds.csv, medals_by_games.csv, all_medals.csv
+│   ├── controversies.json          # 12 sourced records, schema v0.2
+│   ├── sgo_framework.json          # SGO/NSGO governance framework
+│   ├── talent_geography_study.json
+│   ├── policy_timeline.csv, funding_vs_output.csv, governance_scorecard.csv
+│   ├── corpus_labels.jsonl
+│   ├── geo/kenya_counties.csv, geo/medalist_origins.csv
+│   ├── build_all_medals.py, build_medalist_origins.py
+│
+├── backend/
+│   ├── app.py                      # FastAPI app -- all live endpoints
+│   ├── migrate_to_sqlite.py        # Builds the queryable database
+│   ├── requirements.txt, render.yaml
+│
+├── frontend/
+│   ├── index.html                  # Static dashboard, live API-driven
+│   ├── vercel.json
+│
+├── nlp/
+│   ├── collect_corpus.py, train.py, controversy_classifier.py
+│
+├── notebooks/
+│   ├── 01_medal_analysis.py
+│   ├── 02_network_analysis.py      # Governance network graph
+│   ├── 03_governance_density.py    # Medals-vs-incidents overlay
+│   ├── 04_governance_scorecard.py  # Transparent scorecard
+│
+├── docs/
+│   ├── methodology.md, literature-review.md, data-schema.md, concept.md
+│
+├── manuscript/                     # Draft academic publication
+├── viz/                            # Generated charts + dashboard.html
+├── sources/                        # Citation manifest
+├── DEPLOYMENT.md, SETUP.md, CITATION.cff, LICENSE, requirements.txt
+└── README.md
+```
 
-A versioned release will be archived on Zenodo with a DOI (see [`CITATION.cff`](CITATION.cff)). Until then, cite the repository directly. A Country Profile draft for *International Journal of Sport Policy and Politics* is in [`manuscript/`](manuscript).
+---
 
-## Setup
+## 🛠️ Local Setup
 
-See [`SETUP.md`](SETUP.md) for Colab and Termux commands to run the analysis, the data builders, and the classifier trainer. See [`DEPLOYMENT.md`](DEPLOYMENT.md) for standing up your own copy of the live API and dashboard.
+```bash
+# 1. Clone
+git clone https://github.com/jameskoero/kenya-gold-ledger.git
+cd kenya-gold-ledger
 
-## Status
+# 2. Install backend dependencies
+pip install -r backend/requirements.txt
 
-- **Medal spine** — complete and verified. [`medals_by_games.csv`](data/medals_by_games.csv) and all 39 golds in [`golds.csv`](data/golds.csv) are done.
-- **Per-medal expansion** — [`all_medals.csv`](data/all_medals.csv) holds the 39 verified golds plus sourced anchor rows; the remaining silver/bronze rows are completed by running [`data/build_all_medals.py`](data/build_all_medals.py) against source (a committed, reproducible scraper — chosen over hand transcription precisely to avoid memory-based errors). Running it requires network access.
-- **Geospatial** — [`data/geo/`](data/geo) ships a factual county reference and a verified origin seed; [`build_medalist_origins.py`](data/build_medalist_origins.py) enriches per-athlete birthplaces from Wikipedia infoboxes, mapping to counties and flagging (never guessing) anything it can't confidently place. Now cross-referenced against a published talent-origin study.
-- **Governance framework** — the SGO/NSGO structure is adopted and committed ([`data/sgo_framework.json`](data/sgo_framework.json)); full indicator-by-indicator scoring of Athletics Kenya/ADAK against all four dimensions is the next data-collection task.
-- **ML pipeline** — trains on a real labelled news corpus with honest, reproducible evaluation ([`nlp/README.md`](nlp/README.md) has the full comparison of what was tried). Growing the corpus (especially the thin classes) is the top open task.
-- **Controversies / policy / funding** — schema v0.2, 12 sourced records spanning 2015-2026; will keep growing, partly via the NLP pipeline's human-reviewed proposals.
-- **Live API and dashboard** — deployed and verified working end to end (Render + Vercel, free tier, CORS locked to the dashboard's origin).
+# 3. Build the database from the source data
+python backend/migrate_to_sqlite.py
 
-Two builders ([`build_all_medals.py`](data/build_all_medals.py), [`build_medalist_origins.py`](data/build_medalist_origins.py)) need a networked environment to run; they're written to run in Termux or any Python environment. Contributions welcome — see [`CONTRIBUTING.md`](CONTRIBUTING.md).
+# 4. Start the API
+uvicorn backend.app:app --reload
+# Docs: http://localhost:8000/docs
 
+# 5. Open the dashboard
+# Open frontend/index.html directly in a browser, or serve it statically,
+# and point its API base URL field at http://localhost:8000
+```
+
+Full Colab and Termux commands (including the data builders and classifier trainer) are in [`SETUP.md`](SETUP.md). Full deployment instructions for standing up your own copy of the live API and dashboard are in [`DEPLOYMENT.md`](DEPLOYMENT.md).
+
+---
+
+## 🔌 API Reference
+
+**Base URL:** [`https://kenya-gold-ledger-api.onrender.com`](https://kenya-gold-ledger-api.onrender.com/docs)
+
+| Endpoint | Method | Description |
+|---|---|---|
+| `/medals/golds` | GET | All 39 golds; optional `?year=` filter |
+| `/medals/all` | GET | Every medal; optional `?medal=Gold\|Silver\|Bronze` filter |
+| `/medals/by-games` | GET | Per-Games medal totals |
+| `/governance/controversies` | GET | All 12 sourced records; optional `?category=` and `?year_range_contains=` filters |
+| `/governance/sgo-framework` | GET | The 4-dimension SGO/NSGO governance framework |
+| `/governance/scorecard` | GET | Governance Response Scorecard output |
+| `/governance/policy-timeline` | GET | Government policy/funding actions by year |
+| `/geo/medalist-origins` | GET | Athlete birthplace to county; optional `?county=` filter |
+| `/predict/controversy-category` | POST | Runs the trained classifier on submitted text |
+
+**Example -- `POST /predict/controversy-category`:**
+
+Request:
+```json
+{ "text": "ADAK suspended 12 more athletes after out-of-competition testing" }
+```
+
+Response:
+```json
+{ "text": "ADAK suspended 12 more athletes after out-of-competition testing", "predicted_category": "doping" }
+```
+
+---
+
+## 🖥️ Live Dashboard
+
+**URL:** <https://kenya-gold-ledger.vercel.app>
+
+A static, zero-build dashboard built to show medal history, gold concentration by event, and the governance/controversy timeline -- fetching directly from the live API rather than embedding a snapshot, so it stays current as the dataset grows.
+
+| Feature | Description |
+|---|---|
+| **Live connection status** | Confirms the configured API base URL is reachable before rendering data |
+| **Golds by Games table** | Pulled live from `/medals/golds` |
+| **Governance/controversies table** | Pulled live from `/governance/controversies` |
+| **SGO framework table** | Pulled live from `/governance/sgo-framework` |
+
+### Stack
+
+```
+Frontend  : Static HTML + vanilla JS (no build step)
+Hosting   : Vercel (auto-deploy from GitHub main branch)
+API       : kenya-gold-ledger-api.onrender.com (FastAPI on Render)
+```
+
+---
+
+## 🏛️ Governance Framework (SGO/NSGO)
+
+This project adopts the **Sports Governance Observer / National Sports Governance Observer** methodology (Arnout Geeraert, KU Leuven, for Play the Game / Danish Institute for Sports Studies) -- originally applied to national federations in 15+ countries -- and structures it for Athletics Kenya and ADAK across its four standard dimensions:
+
+| Dimension | What it measures |
+|---|---|
+| **Transparency** | Public reporting of decisions, finances, testing statistics |
+| **Democratic processes** | Free/fair elections, athlete involvement in decisions |
+| **Internal accountability and control** | Separation of powers, independent disciplinary processes |
+| **Societal responsibility** | Athlete welfare, anti-discrimination, community impact |
+
+Full indicator-by-indicator scoring against all four dimensions is the next open data-collection task -- see [`data/sgo_framework.json`](data/sgo_framework.json) and [`docs/methodology.md`](docs/methodology.md).
+
+---
+
+## 🔒 Data Integrity & Sourcing
+
+> This project uses **100% sourced, verifiable data**. Where a claim can't be confirmed against a real, cited source, it is flagged as a gap rather than filled in.
+
+- ✅ Every row in every dataset carries a `source`
+- ✅ Every `controversies.json` record carries a `confidence` rating reflecting strength of public documentation
+- ✅ Contested figures (e.g. Olympedia's 39-45-40 vs. some Wikipedia tables' 39-44-41) are recorded as discrepancies, not silently resolved
+- ✅ **No synthetic data anywhere** -- reproducible builders ([`build_all_medals.py`](data/build_all_medals.py), [`build_medalist_origins.py`](data/build_medalist_origins.py)) scrape from source rather than being hand-transcribed
+- ✅ Creative Commons CC-BY-4.0 -- all data and documentation openly reusable with attribution
+
+See full [`docs/methodology.md`](docs/methodology.md).
+
+---
+
+## 🗓️ Roadmap
+
+- [x] Medal spine -- complete and verified (all 39 golds, full medals-by-Games record)
+- [x] Governance/controversy dataset -- schema v0.2, 12 sourced records, 2015-2026
+- [x] SGO/NSGO governance framework adopted and structured for Athletics Kenya/ADAK
+- [x] ML classifier trained on a real labelled news corpus (TF-IDF + ComplementNB)
+- [x] Live FastAPI backend deployed on Render, CORS-locked
+- [x] Live static dashboard deployed on Vercel, fetching from the API
+- [ ] Full indicator-by-indicator SGO scoring of Athletics Kenya/ADAK
+- [ ] Growing the ML training corpus (especially thin classes)
+- [ ] Per-medal expansion -- remaining silver/bronze rows via `build_all_medals.py`
+- [ ] Zenodo DOI archival
+- [ ] Journal submission -- Country Profile, *International Journal of Sport Policy and Politics*
+
+---
+
+## 👤 Author
+
+**James Koero** -- ML Engineer & Researcher | Kisumu, Kenya
+
+[![GitHub](https://img.shields.io/badge/GitHub-jameskoero-181717?style=flat-square&logo=github)](https://github.com/jameskoero) [![LinkedIn](https://img.shields.io/badge/LinkedIn-jameskoero-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/jameskoero)
+
+Academic collaborators:
+- **Prof. Samuel Liyala** -- JOOUST, Kenya
+- **Prof. Johan Loeckx** -- Vrije Universiteit Brussel (VUB AI Lab), Belgium
+
+---
+
+## 📜 License
+
+- **Code** ([`nlp/`](nlp), [`notebooks/`](notebooks), [`backend/`](backend), [`frontend/`](frontend)): **MIT** -- see [`LICENSE`](LICENSE).
+- **Data and documentation** ([`data/`](data), [`docs/`](docs)): **Creative Commons Attribution 4.0 (CC-BY 4.0)**.
+
+A versioned release will be archived on Zenodo with a DOI (see [`CITATION.cff`](CITATION.cff)). Until then, cite the repository directly.
+
+---
+
+*Built in Kisumu, Kenya*
