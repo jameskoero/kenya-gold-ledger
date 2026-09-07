@@ -33,7 +33,7 @@ app = FastAPI(
 # ["https://jameskoero.github.io"]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://kenya-gold-ledger.vercel.app"],
     allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
