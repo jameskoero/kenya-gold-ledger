@@ -2,6 +2,7 @@ services:
   - type: web
     name: kenya-gold-ledger-api
     env: python
+    plan: free
     buildCommand: "pip install -r backend/requirements.txt && python backend/migrate_to_sqlite.py"
     startCommand: "gunicorn backend.app:app -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT"
     envVars:
