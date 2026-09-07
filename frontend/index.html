@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenya at Gold: The Governance Ledger</title>
+<style>
+  body { font-family: 'IBM Plex Mono', monospace; background:#f7f4ee; color:#1a1a1a; margin:0; padding:2rem 1rem; }
+  h1 { font-family: Fraunces, serif; margin-bottom:0.2rem; }
+  .subtitle { color:#555; margin-top:0; margin-bottom:1.5rem; }
+  #api-status { font-size:0.85rem; padding:0.5rem 1rem; border-radius:4px; display:inline-block; margin-bottom:1.5rem; }
+  #api-status.ok { background:#d8e8d8; }
+  #api-status.err { background:#f2d5d5; }
+  table { border-collapse: collapse; width:100%; margin-bottom:2rem; }
+  th, td { border:1px solid #ccc; padding:0.4rem 0.6rem; text-align:left; font-size:0.85rem; vertical-align:top; }
+  th { background:#1a1a1a; color:#fff; }
+  input { padding:0.4rem; margin-bottom:1rem; width:100%; max-width:420px; box-sizing:border-box; }
+  footer { font-size:0.8rem; color:#777; margin-top:2rem; }
+</style>
+</head>
+<body>
+  <h1>Kenya at Gold</h1>
+  <p class="subtitle">The Governance Ledger — data fetched live from the API, not embedded.</p>
+  <div id="api-status">Checking API connection...</div>
+
+  <label for="api-base">API base URL:</label><br>
+  <!-- Set this to your live Render URL once deployed, e.g.
+       https://kenya-gold-ledger-api.onrender.com -->
+  <input id="api-base" placeholder="https://kenya-gold-ledger-api.onrender.com"
+         value="https://kenya-gold-ledger-api.onrender.com">
+
+  <h2>Golds by Games</h2>
+  <div id="golds-table">Loading...</div>
+
+  <h2>Governance / Controversies (2022–2026)</h2>
+  <div id="controversies-table">Loading...</div>
+
+  <h2>SGO Governance Framework (4 dimensions)</h2>
+  <div id="sgo-table">Loading...</div>
+
+  <footer>
+    Code: MIT. Data: CC-BY 4.0. Repo:
+    <a href="https://github.com/jameskoero/kenya-gold-ledger">github.com/jameskoero/kenya-gold-ledger</a>
+  </footer>
+
+<script>
+const els = {
+  status: document.getElementById('api-status'),
+  base: document.getElementById('api-base'),
+  golds: document.getElementById('golds-table'),
+  controversies: document.getElementById('controversies-table'),
+  sgo: document.getElementById('sgo-table'),
+};
+
+function renderTable(container, rows) {
+  if (!rows || rows.length === 0) {
+    container.innerHTML = '<em>No data returned.</em>';
+    return;
+  }
+  const cols = Object.keys(rows[0]);
+  let html = '<table><thead><tr>' + cols.map(c => `<th>${c}</th>`).join('') + '</tr></thead><tbody>';
+  for (const row of rows) {
+    html += '<tr>' + cols.map(c => `<td>${row[c] ?? ''}</td>`).join('') + '</tr>';
+  }
+  html += '</tbody></table>';
+  container.innerHTML = html;
+}
+
+async function loadAll() {
+  const base = els.base.value.replace(/\/$/, '');
+  try {
+    const rootResp = await fetch(base + '/');
+    if (!rootResp.ok) throw new Error('API unreachable');
+    els.status.textContent = 'Connected to ' + base;
+    els.status.className = 'ok';
+
+    const golds = await (await fetch(base + '/medals/golds')).json();
+    renderTable(els.golds, golds);
+
+    const controversies = await (await fetch(base + '/governance/controversies?year_range_contains=2025')).json();
+    renderTable(els.controversies, controversies);
+
+    const sgo = await (await fetch(base + '/governance/sgo-framework')).json();
+    renderTable(els.sgo, sgo);
+  } catch (err) {
+    els.status.textContent = 'Could not reach API at ' + base + ' — set the correct Render URL above.';
+    els.status.className = 'err';
+  }
+}
+
+els.base.addEventListener('change', loadAll);
+loadAll();
+</script>
+</body>
+</html>

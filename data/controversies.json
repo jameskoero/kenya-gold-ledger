@@ -1,6 +1,6 @@
 {
-  "schema_version": "0.1",
-  "note": "Each record is a verifiable, sourced incident. No synthetic entries. 'confidence' reflects strength of public documentation, not editorial judgement. Where a claim is contested, both the allegation and the response are recorded.",
+  "schema_version": "0.2",
+  "note": "Each record is a verifiable, sourced incident. No synthetic entries. 'confidence' reflects strength of public documentation, not editorial judgement. Where a claim is contested, both the allegation and the response are recorded. v0.2 extends coverage through the 2025 WADA non-compliance episode and 2026 clearance.",
   "records": [
     {
       "id": "C-2015-AK-NIKE",
@@ -104,6 +104,62 @@
       "linked_medalists": [],
       "confidence": "medium",
       "sources": ["https://www.researchgate.net/publication/26756967_East_African_Runners_Their_Genetics_Lifestyle_and_Athletic_Prowess"]
+    },
+    {
+      "id": "C-2022-2024-AIU-ADAK-TRENDS",
+      "year_range": "2022-2024",
+      "category": "doping",
+      "title": "Escalating AIU/ADAK sanction counts and the $25M WADA funding agreement",
+      "summary": "Annual sanctions rose sharply: AIU suspended 28 Kenyan athletes in 2022, 25 in 2023, and 39 in 2024; ADAK suspended 34, 60, and 72 respectively over the same years. The AIU's ineligible list reached 119 Kenyan athletes by 31 December 2024, up from 54 two years earlier. Kenya signed a USD 25 million, five-year anti-doping funding agreement with WADA in 2022, though 2024 government budget cuts prompted President Ruto to personally pledge continued ADAK funding to IOC president Thomas Bach. ADAK's own budget subsequently rose roughly tenfold, from KES 20 million (FY2023/24) to KES 185 million (FY2024/25), alongside 4,161 tests conducted that year.",
+      "people_implicated": [],
+      "outcome": "Testing volume and sanction counts both rose, reflecting increased enforcement capacity rather than a resolved problem; set up the 2025 WADA compliance crisis.",
+      "linked_medalists": [],
+      "confidence": "high",
+      "sources": [
+        "https://nation.africa/kenya/sports/athletics/doping-in-kenya-the-figures-the-substances-and-the-cheaters--5209812",
+        "https://www.thesportsexaminer.com/athletics-kenya-india-and-russia-lead-the-481-deep-aiu-ineligible-list-for-worldwide-track-field-at-the-end-of-2024/",
+        "https://tonireavis.com/2025/07/17/beyond-the-athlete-the-hidden-blame-in-runnings-drug-crisis/",
+        "https://marathonhandbook.com/20-kenyan-athletes-barred-from-world-trials-over-missed-doping-tests/"
+      ]
+    },
+    {
+      "id": "C-2025-TRIALS-CHEPNGETICH",
+      "year_range": "2025",
+      "category": "doping",
+      "title": "World Championship trials bans and the Chepngetich marathon world-record case",
+      "summary": "Ahead of the 2025 World Athletics Championships in Tokyo, 20 Kenyan athletes were barred from national trials for missing mandatory out-of-competition tests under World Athletics Rule 15 (only 125 of 145 submitted athletes completed the first testing phase by the May 24 deadline). On 17 July, marathon world record holder Ruth Chepngetich was provisionally suspended after an out-of-competition sample (14 March) showed a concentration of 3,800 ng/ml against a WADA reporting threshold of 20 ng/ml.",
+      "people_implicated": ["Ruth Chepngetich (marathon world record holder, 2024 Chicago Marathon)"],
+      "outcome": "Chepngetich accepted a voluntary provisional suspension (19 April) ahead of the AIU's own provisional suspension; case outcome (standard two-year ban, subject to hearing) pending as of source publication.",
+      "linked_medalists": [],
+      "confidence": "high",
+      "sources": [
+        "https://marathonhandbook.com/20-kenyan-athletes-barred-from-world-trials-over-missed-doping-tests/",
+        "https://tonireavis.com/2025/07/17/beyond-the-athlete-the-hidden-blame-in-runnings-drug-crisis/"
+      ]
+    },
+    {
+      "id": "C-2025-WADA-NONCOMPLIANCE",
+      "year_range": "2025",
+      "category": "anti_doping_governance",
+      "title": "WADA declares Kenya and ADAK non-compliant with the WADA Code",
+      "summary": "Following a May 2024 audit under the International Standard for Code Compliance by Signatories (ISCCS), WADA's Executive Committee declared Kenya and ADAK non-compliant on 11 September 2025, with consequences (including loss of rights to host regional, continental, or world championships) set to take effect 3 October 2025 unless corrective action was taken or the finding disputed.",
+      "people_implicated": [],
+      "outcome": "ADAK developed a corrective action plan addressing governance and oversight structures, operational independence, results management, and athlete whereabouts systems.",
+      "linked_medalists": [],
+      "confidence": "high",
+      "sources": ["https://www.flashscore.com/news/kenyan-government-undertakes-comprehensive-reforms-to-strengthen-anti-doping-regime/08WkJEcE"]
+    },
+    {
+      "id": "C-2026-WADA-CLEARANCE",
+      "year_range": "2026",
+      "category": "anti_doping_governance",
+      "title": "WADA clears Kenya from the non-compliance watchlist",
+      "summary": "Following ADAK's corrective action plan, WADA expunged Kenya from its non-compliance watchlist, closing out the crisis opened in September 2025. Of 131 athletes tested by ADAK in the relevant window, 13% (18) were caught via out-of-competition testing and 86% (113) via in-competition testing; the AIU banned 19 individuals in 2025, down from 39 the prior year.",
+      "people_implicated": [],
+      "outcome": "Kenya's hosting and competition rights were preserved; documented as a completed governance-response cycle from crisis (2025) to remediation (2026) — the clearest test case in this dataset for the governance-response scorecard methodology.",
+      "linked_medalists": [],
+      "confidence": "high",
+      "sources": ["https://thekenyatimes.com/latest-kenya-times-news/kenya-escapes-wada-ban/"]
     }
   ]
 }

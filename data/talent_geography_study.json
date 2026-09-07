@@ -1,0 +1,13 @@
+{
+  "study_context": "Regional/ethnic distribution study comparing elite Kenyan runners against controls, used here to validate this project's medalist_origins.csv against independently published findings rather than assumption.",
+  "sample": "404 elite Kenyan runners (800m-marathon) and 87 Kenyan controls",
+  "source_note": "Cited from a nutrition/performance study conducted at Iten training camp, Elgeyo Marakwet County (altitude 2400m, camp population ~1500 runners); original distribution figures as reported in that published research.",
+  "source": "https://www.researchgate.net/publication/318732578_Association_between_Performance_and_Injury_with_Dietary_Intake_and_Nutritional_Status_among_Athletes_Case_of_Iten_Training_Camp_in_the_Rift_Valley_of_Kenya",
+  "findings": {
+    "rift_valley_origin_pct": {"controls": 20, "national_athletes": 65, "international_athletes": 81},
+    "kalenjin_ethnicity_pct": {"controls": 8, "national_athletes": 49, "international_athletes": 76},
+    "nandi_subtribe_pct": {"controls": 5, "national_athletes": 25, "international_athletes": 44}
+  },
+  "usage": "notebooks/05_talent_geography_validation.py cross-references this project's own medalist_origins.csv (birthplace -> county) against these published proportions, reporting agreement/divergence rather than asserting a genetic or ethnic claim independently.",
+  "caveat": "This is descriptive geographic/socioeconomic correlation from a single published study, not a claim about innate ability. Present alongside the grassroots-access and altitude-training-infrastructure explanations used in that same literature."
+}

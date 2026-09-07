@@ -1,0 +1,48 @@
+{
+  "project": "Kenya at Gold: The Governance Ledger",
+  "repo": "kenya-gold-ledger",
+  "framework": "Sports Governance Observer (SGO) / National Sports Governance Observer (NSGO)",
+  "developed_by": "Arnout Geeraert (KU Leuven) for Play the Game / Danish Institute for Sports Studies",
+  "source": "https://www.playthegame.org/themes/benchmarking-sports-governance/",
+  "methodology_note": "Original NSGO tool: 274 indicators grouped into 46 principles across 4 dimensions, applied via dichotomous (yes/no) scoring to national sports federations in 15+ countries (round 2: Bosnia, Bulgaria, Canada, Colombia, Georgia, Iceland, India, Indonesia, Lithuania, Portugal, Serbia, Slovenia, Spain, Ukraine, USA). This project adapts the 4-dimension structure to score Athletics Kenya and ADAK using publicly documented evidence, following the same dichotomous logic. This is an independent adaptation, not an official Play the Game assessment.",
+  "dimensions": [
+    {
+      "id": "transparency",
+      "name": "Transparency",
+      "definition": "An organisation's reporting on its internal workings, allowing others to scrutinise decisions and finances.",
+      "example_indicators_applied": [
+        "Are ADAK/Athletics Kenya annual reports publicly available?",
+        "Are testing statistics (counts, sports, outcomes) published on a regular schedule?",
+        "Is funding source and amount (e.g. WADA agreements, government allocations) publicly disclosed?"
+      ]
+    },
+    {
+      "id": "democratic_processes",
+      "name": "Democratic processes",
+      "definition": "Free, fair, competitive elections; involvement of affected actors (athletes) in decision-making; open internal debate.",
+      "example_indicators_applied": [
+        "Is there documented athlete representation in Athletics Kenya governance structures?",
+        "Are leadership elections documented and contested?"
+      ]
+    },
+    {
+      "id": "internal_accountability_control",
+      "name": "Internal accountability and control",
+      "definition": "Separation of powers within governance structure; rules and procedures ensuring compliance with internal norms.",
+      "example_indicators_applied": [
+        "Is there a documented, independent disciplinary/tribunal process for doping cases (distinct from AIU's own process)?",
+        "Are corrective action plans (e.g. ADAK's 2024-25 WADA-mandated plan) publicly tracked to completion?"
+      ]
+    },
+    {
+      "id": "societal_responsibility",
+      "name": "Societal responsibility",
+      "definition": "Accountability to broader stakeholders: athlete welfare, anti-discrimination, community impact.",
+      "example_indicators_applied": [
+        "Are athlete welfare programs (financial, medical, post-career) documented and funded?",
+        "Is there a public education/awareness program for clean sport (e.g. ADAK's education campaigns)?"
+      ]
+    }
+  ],
+  "status": "Framework adopted 2026; full indicator-by-indicator scoring against Athletics Kenya/ADAK is the next data-collection task (see docs/methodology.md) — no scores fabricated, only the source-backed structure is committed at this stage."
+}
